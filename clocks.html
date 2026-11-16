@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Clocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #4b1d52; --ink: #2d1231; --muted: #5b4163;
+    --lav: #ddccff; --mint: #a8efd0; --pink: #ffd0e4; --peach: #ffd3bf; --sky: #c7dff9; --butter: #f8f4c8;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { background: transparent; }
+  body { font-family: "Fira Sans", system-ui, sans-serif; color: var(--ink); padding: 10px 8px 14px; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+  .card {
+    border: 2.5px solid var(--plum); border-radius: 18px; box-shadow: 0 5px 0 var(--plum);
+    padding: 12px 12px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; min-height: 196px;
+  }
+  .place { font-weight: 800; font-size: 15px; letter-spacing: .2px; }
+  .zone { font-weight: 500; font-size: 12px; color: var(--muted); margin-top: -4px; }
+  svg.face { width: 84px; height: 84px; }
+  .time { font-weight: 800; font-size: 24px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .day { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--muted); }
+  .chip { background: #fff; border: 2px solid var(--plum); border-radius: 999px; padding: 1px 8px; font-weight: 700; color: var(--ink); }
+  .sky { width: 16px; height: 16px; }
+</style>
+</head>
+<body>
+<div class="row" id="row"></div>
+<script>
+  // place, zone label, IANA time zone, card colour
+  const CLOCKS = [
+    ["West US", "Los Angeles", "America/Los_Angeles", "var(--lav)"],
+    ["Central US", "Chicago", "America/Chicago", "var(--mint)"],
+    ["East US", "New York", "America/New_York", "var(--pink)"],
+    ["UK", "London", "Europe/London", "var(--sky)"],
+    ["Eastern Europe", "Bucharest", "Europe/Bucharest", "var(--peach)"],
+  ];
+  const row = document.getElementById("row");
+
+  function parts(tz, d) {
+    const f = new Intl.DateTimeFormat("en-GB", { timeZone: tz, hour: "numeric", minute: "numeric", second: "numeric",
+      weekday: "short", year: "numeric", month: "numeric", day: "numeric", hourCycle: "h23" });
+    const o = {};
+    f.formatToParts(d).forEach(p => { o[p.type] = p.value; });
+    return o;
+  }
+  function dayKey(o) { return Number(o.year) * 400 + Number(o.month) * 32 + Number(o.day); }
+
+  // a little round face: ticks, two hands, a centre dot
+  function face(id) {
+    let ticks = "";
+    for (let i = 0; i < 12; i++) {
+      const a = i * Math.PI / 6, r1 = i % 3 ? 33 : 30;
+      ticks += `<line x1="${42 + Math.sin(a) * r1}" y1="${42 - Math.cos(a) * r1}" x2="${42 + Math.sin(a) * 36}" y2="${42 - Math.cos(a) * 36}" stroke="#4b1d52" stroke-width="${i % 3 ? 2 : 3}" stroke-linecap="round"/>`;
+    }
+    return `<svg class="face" viewBox="0 0 84 84" aria-hidden="true">
+      <circle cx="42" cy="42" r="39" fill="#fff" stroke="#4b1d52" stroke-width="3"/>${ticks}
+      <line id="${id}h" x1="42" y1="42" x2="42" y2="22" stroke="#4b1d52" stroke-width="5" stroke-linecap="round"/>
+      <line id="${id}m" x1="42" y1="42" x2="42" y2="12" stroke="#4b1d52" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="42" cy="42" r="4.5" fill="#4b1d52"/></svg>`;
+  }
+  const SUN = `<svg class="sky" viewBox="0 0 16 16"><circle cx="8" cy="8" r="4" fill="#f8d64e" stroke="#4b1d52" stroke-width="1.5"/></svg>`;
+  const MOON = `<svg class="sky" viewBox="0 0 16 16"><path d="M10.5 2.5a6 6 0 1 0 3 9.5 5 5 0 0 1-3-9.5z" fill="#c9b8ff" stroke="#4b1d52" stroke-width="1.5"/></svg>`;
+
+  CLOCKS.forEach(([place, city, tz, bg], i) => {
+    const c = document.createElement("div");
+    c.className = "card";
+    c.style.background = bg;
+    c.innerHTML = `<div class="place">${place}</div><div class="zone">${city}</div>${face("c" + i)}
+      <div class="time" id="t${i}"></div><div class="day" id="d${i}"></div>`;
+    row.appendChild(c);
+  });
+
+  function tick() {
+    const now = new Date(), me = parts(Intl.DateTimeFormat().resolvedOptions().timeZone, now);
+    CLOCKS.forEach(([, , tz], i) => {
+      const o = parts(tz, now), h = Number(o.hour), m = Number(o.minute);
+      document.getElementById("c" + i + "h").setAttribute("transform", `rotate(${(h % 12) * 30 + m / 2} 42 42)`);
+      document.getElementById("c" + i + "m").setAttribute("transform", `rotate(${m * 6} 42 42)`);
+      const h12 = h % 12 || 12;
+      document.getElementById("t" + i).textContent = `${h12}:${String(m).padStart(2, "0")} ${h < 12 ? "am" : "pm"}`;
+      const diff = dayKey(o) - dayKey(me);
+      const when = diff === 0 ? "Today" : diff < 0 ? "Yesterday" : "Tomorrow";
+      document.getElementById("d" + i).innerHTML = `${h >= 6 && h < 18 ? SUN : MOON}<span class="chip">${o.weekday} · ${when}</span>`;
+    });
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
