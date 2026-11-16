@@ -26,6 +26,17 @@
   .day { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--muted); }
   .chip { background: #fff; border: 2px solid var(--plum); border-radius: 999px; padding: 1px 8px; font-weight: 700; color: var(--ink); }
   .sky { width: 16px; height: 16px; }
+  /* ?side=1: a slim column, one small row per clock */
+  body.side .row { grid-template-columns: 1fr; gap: 10px; }
+  body.side .card { min-height: 0; flex-direction: row; justify-content: flex-start; gap: 10px; padding: 8px 10px;
+                    border-radius: 14px; box-shadow: 0 3px 0 var(--plum); border-width: 2px; }
+  body.side svg.face { width: 44px; height: 44px; flex: none; }
+  body.side .txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  body.side .place { font-size: 12px; }
+  body.side .zone { display: none; }
+  body.side .time { font-size: 18px; }
+  body.side .day { font-size: 11px; }
+  body.side .chip { padding: 0 6px; border-width: 1.5px; }
 </style>
 </head>
 <body>
@@ -40,6 +51,8 @@
     ["Eastern Europe", "Bucharest", "Europe/Bucharest", "var(--peach)"],
   ];
   const row = document.getElementById("row");
+  const SIDE = new URLSearchParams(location.search).get("side") === "1";
+  if (SIDE) document.body.classList.add("side");
 
   function parts(tz, d) {
     const f = new Intl.DateTimeFormat("en-GB", { timeZone: tz, hour: "numeric", minute: "numeric", second: "numeric",
@@ -70,7 +83,9 @@
     const c = document.createElement("div");
     c.className = "card";
     c.style.background = bg;
-    c.innerHTML = `<div class="place">${place}</div><div class="zone">${city}</div>${face("c" + i)}
+    c.innerHTML = SIDE
+      ? `${face("c" + i)}<div class="txt"><div class="place">${place}</div><div class="time" id="t${i}"></div><div class="day" id="d${i}"></div></div>`
+      : `<div class="place">${place}</div><div class="zone">${city}</div>${face("c" + i)}
       <div class="time" id="t${i}"></div><div class="day" id="d${i}"></div>`;
     row.appendChild(c);
   });

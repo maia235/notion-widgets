@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number Bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #4b1d52; --ink: #2d1231; --label: #91918e;
+    --lav: #ddccff; --mint: #a8efd0; --pink: #ffd0e4; --peach: #ffd3bf; --sky: #c7dff9; --butter: #f8f4c8;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { background: transparent; }
+  body { font-family: "Fira Sans", system-ui, sans-serif; padding: 4px 6px 10px; }
+  .bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr)); gap: 10px 12px; }
+  .label { font-size: 12px; font-weight: 500; color: var(--label); margin: 0 0 5px 3px;
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card { border: 2px solid var(--plum); border-radius: 12px; box-shadow: 0 3px 0 var(--plum);
+          height: 52px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .num { font-size: 24px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
+  .of { font-size: 13px; font-weight: 700; color: var(--ink); opacity: .55; }
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<script>
+  // ?s=[["label", "value", "colour", "of"], ...]  colour: lav mint pink peach sky butter
+  let stats = [];
+  try { stats = JSON.parse(new URLSearchParams(location.search).get("s") || "[]"); } catch (e) { stats = []; }
+  const bar = document.getElementById("bar");
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  stats.forEach(([label, value, colour, of]) => {
+    const d = document.createElement("div");
+    d.innerHTML = `<div class="label">${esc(label)}</div><div class="card" style="background: var(--${esc(colour || "lav")})">` +
+      `<span class="num">${esc(value)}</span>${of ? `<span class="of">/ ${esc(of)}</span>` : ""}</div>`;
+    bar.appendChild(d);
+  });
+</script>
+</body>
+</html>
