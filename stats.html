@@ -20,23 +20,51 @@
   .card { border: 2px solid var(--plum); border-radius: 12px; box-shadow: 0 3px 0 var(--plum);
           height: 52px; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .num { font-size: 24px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
+  .asof { font-size: 12px; font-weight: 500; color: #6b6b68; margin: 8px 0 0 3px; }
+  .bar.stale .card { filter: grayscale(1); opacity: .6; }
   .of { font-size: 13px; font-weight: 700; color: var(--ink); opacity: .55; }
 </style>
 </head>
 <body>
 <div class="bar" id="bar"></div>
+<div class="asof" id="asof" hidden></div>
 <script>
   // ?s=[["label", "value", "colour", "of"], ...]  colour: lav mint pink peach sky butter
+  // Optional &t=<unix seconds the numbers were worked out>&ttl=<lifetime in seconds>: past t + ttl the bar greys.
+  // A link without t is never greyed.
+  const params = new URLSearchParams(location.search);
   let stats = [];
-  try { stats = JSON.parse(new URLSearchParams(location.search).get("s") || "[]"); } catch (e) { stats = []; }
+  try { stats = JSON.parse(params.get("s") || "[]"); } catch (e) { stats = []; }
+  if (!Array.isArray(stats)) stats = [];
   const bar = document.getElementById("bar");
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  stats.forEach(([label, value, colour, of]) => {
+  stats.forEach(row => {
+    const [label, value, colour, of] = Array.isArray(row) ? row : [];
     const d = document.createElement("div");
     d.innerHTML = `<div class="label">${esc(label)}</div><div class="card" style="background: var(--${esc(colour || "lav")})">` +
       `<span class="num">${esc(value)}</span>${of ? `<span class="of">/ ${esc(of)}</span>` : ""}</div>`;
     bar.appendChild(d);
   });
+
+  const t = Number(params.get("t")), ttl = Number(params.get("ttl"));
+  const asof = document.getElementById("asof");
+  function when() {
+    if (!t) return "not updated yet";
+    const d = new Date(t * 1000);
+    if (isNaN(d)) return "";
+    const time = d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }).toLowerCase();
+    return "as of " + (d.toDateString() === new Date().toDateString() ? "" : d.toLocaleDateString([], { day: "numeric", month: "short" }) + ", ") + time;
+  }
+  function check() {
+    if (!params.has("t") || !Number.isFinite(t) || t < 0) return;
+    const stale = Number.isFinite(ttl) && ttl > 0 && Date.now() / 1000 > t + ttl;
+    bar.classList.toggle("stale", stale);
+    asof.textContent = stale ? when() : "";
+    asof.hidden = !stale;
+    bar.title = stale ? "" : when();
+  }
+  check();
+  setInterval(check, 60000);
 </script>
 </body>
 </html>
