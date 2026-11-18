@@ -133,7 +133,7 @@ for (const theme of ["light", "dark"]) {
     }
   }
 }
-// Pills keep Notion's own text colours (read from its build); the tick is plum on mint.
+// Pills keep Notion's own text colours (read from its build); the tick is my plum outline colour on mint.
 const pillText = { "--c-purBacTer": "#553b69", "--c-pinBacTer": "#68354e", "--c-greBacTer": "#2a533c", "--c-bluBacTer": "#264a72", "--c-yelBacTer": "#655121", "--c-oraBacTer": "#6a4222" };
 const pills = tokens(".notion-light-theme.notion-light-theme");
 for (const [k, text] of Object.entries(pillText)) {
@@ -142,8 +142,8 @@ for (const [k, text] of Object.entries(pillText)) {
   known.pill.add(text).add(pills[k]);
   worst = Math.min(worst, r);
 }
-assert(ratio(local.plum, local.mint) >= 4.5, "tick plum on mint");
-known.tick.add(local.plum).add(local.mint);
+assert(ratio(local.edge, local.mint) >= 4.5, "tick plum on mint");
+known.tick.add(local.edge).add(local.mint);
 
 // The comment table must match: every row recomputes, and the worst pair is right.
 const rows = [...body.matchAll(/^\s+(light|dark|pill|tick)\s+\w+\s+(#[0-9a-f]{6})\s+\w+\s+(#[0-9a-f]{6})\s+([\d.]+)$/gm)];

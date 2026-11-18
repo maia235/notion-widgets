@@ -7,20 +7,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
+  /* blueberry-sunrise:start (generated from the Blueberry Sunrise root c43009bd2242; never edit by hand) */
   :root {
-    --plum: #4b1d52; --ink: #2d1231; --label: #91918e;
-    --lav: #ddccff; --mint: #a8efd0; --pink: #ffd0e4; --peach: #ffd3bf; --sky: #c7dff9; --butter: #f8f4c8;
+    --edge: #441d68; --lip: #441d68; --ink: #26143c; --ink-2: #55426f; --pink: #ffc2da; --peach: #ffcab0;
+    --butter: #fef4b4; --mint: #9ef5cf; --sky: #b2dcff; --lav: #d6c1ff; --label: #91918e; --asof: #6b6b68;
   }
+  /* blueberry-sunrise:end */
   * { box-sizing: border-box; margin: 0; }
   html, body { background: transparent; }
   body { font-family: "Fira Sans", system-ui, sans-serif; padding: 4px 6px 10px; }
   .bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr)); gap: 10px 12px; }
   .label { font-size: 12px; font-weight: 500; color: var(--label); margin: 0 0 5px 3px;
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .card { border: 2px solid var(--plum); border-radius: 12px; box-shadow: 0 3px 0 var(--plum);
+  .card { border: 2px solid var(--edge); border-radius: 12px; box-shadow: 0 3px 0 var(--lip);
           height: 52px; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .num { font-size: 24px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
-  .asof { font-size: 12px; font-weight: 500; color: #6b6b68; margin: 8px 0 0 3px; }
+  .asof { font-size: 12px; font-weight: 500; color: var(--asof); margin: 8px 0 0 3px; }
   .bar.stale .card { filter: grayscale(1); opacity: .6; }
   .of { font-size: 13px; font-weight: 700; color: var(--ink); opacity: .55; }
 </style>
@@ -29,7 +31,7 @@
 <div class="bar" id="bar"></div>
 <div class="asof" id="asof" hidden></div>
 <script>
-  // ?s=[["label", "value", "colour", "of"], ...]  colour: lav mint pink peach sky butter
+  // ?s=[["label", "value", "colour", "of"], ...]  colour: pink peach butter mint sky lav
   // Optional &t=<unix seconds the numbers were worked out>&ttl=<lifetime in seconds>: past t + ttl the bar greys.
   // A link without t is never greyed.
   const params = new URLSearchParams(location.search);

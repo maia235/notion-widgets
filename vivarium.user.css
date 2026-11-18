@@ -1,16 +1,16 @@
 /* ==UserStyle==
 @name         Vivarium for Notion
 @namespace    https://maia235.github.io/notion-widgets
-@version      0.1.0
-@description  A calm, flat block-pastel look for Notion in Firefox: soft colours in light and dark, full width on every page, less clutter.
+@version      0.2.0
+@description  A calm, flat block-pastel look for Notion in Firefox, wearing Blueberry Sunrise: my cream sunrise in light, a blueberry night in dark, full width on every page, less clutter.
 @homepageURL  https://github.com/maia235/notion-widgets
 @updateURL    https://maia235.github.io/notion-widgets/vivarium.user.css
 @license      MIT
 @preprocessor less
 
 @var color    vivPageLight  "Page background (light)" #fdfaf5
-@var color    vivPageDark   "Page background (dark)" #1f1424
-@var color    vivAccent     "Accent: sidebar, hover and selected tint" #ddccff
+@var color    vivPageDark   "Page background (dark)" #12143a
+@var color    vivAccent     "Accent: sidebar, hover and selected tint" #d6c1ff
 @var range    vivRadius     "Corner radius" [14, 4, 24, 1, "px"]
 @var range    vivMargin     "Side margin at full width" [96, 24, 192, 8, "px"]
 @var checkbox vivColours    "A. My colours, light and dark" 1
@@ -40,50 +40,98 @@
   text smaller, or touches red (red stays for what is truly overdue).
 
   Contrast, default settings (WCAG ratio, text on background; 4.5 is the
-  floor for body text). test-vivarium.mjs works these out again from the
-  colours below and fails if any row is wrong or any pair drops under 4.5.
-    theme  text                    background                 ratio
-    light  ink      #2d1231        page      #fdfaf5         16.23
-    light  ink      #2d1231        sidebar   #f3ecf8         14.62
-    light  ink      #2d1231        hover     #ebe1fb         13.44
-    light  ink      #2d1231        selected  #e6d9fc         12.63
-    light  soft     #59425e        page      #fdfaf5          8.53
-    light  soft     #59425e        sidebar   #f3ecf8          7.68
-    light  soft     #59425e        hover     #ebe1fb          7.06
-    light  softer   #6a5470        page      #fdfaf5          6.48
-    light  softer   #6a5470        sidebar   #f3ecf8          5.83
-    light  softer   #6a5470        hover     #ebe1fb          5.36
-    light  softer   #6a5470        selected  #e6d9fc          5.04
-    dark   ink      #f7eefa        page      #1f1424         15.68
-    dark   ink      #f7eefa        hover     #41354b         10.11
-    dark   soft     #d8c8de        sidebar   #2c2133          9.64
-    dark   soft     #d8c8de        hover     #41354b          7.21
-    dark   softer   #c4b0cb        page      #1f1424          8.80
-    dark   softer   #c4b0cb        sidebar   #2c2133          7.59
-    dark   softer   #c4b0cb        hover     #41354b          5.68
-    dark   softer   #c4b0cb        selected  #453950          5.33
-    pill   purple   #553b69        lavender  #ddccff          6.39
-    pill   pink     #68354e        pink      #ffd0e4          6.97
-    pill   green    #2a533c        mint      #a8efd0          6.63
-    pill   blue     #264a72        sky       #c7dff9          6.66
-    pill   yellow   #655121        butter    #f8f4c8          6.82
-    pill   orange   #6a4222        peach     #ffd3bf          6.34
-    tick   plum     #4b1d52        mint      #a8efd0          9.97
-  Worst pair: 5.04 (softer text on a selected sidebar row, light). The test
-  also checks every text colour on every background, not only these rows.
+  floor for body text). The colours, this table and the worst pair are
+  generated from the Blueberry Sunrise root; test-vivarium.mjs works these
+  out again from the colours below and fails if any row is wrong or any pair
+  drops under 4.5. It also checks every text colour on every background, not
+  only these rows.
+  contrast:start
+    theme  text              background          ratio
+    light  ink      #26143c  page       #fdfaf5   16.16
+    light  ink      #26143c  sidebar    #f6f2fe   15.27
+    light  ink      #26143c  hover      #f1ecfd   14.55
+    light  ink      #26143c  active     #fff6e1   15.65
+    light  ink      #26143c  raised     #ffffff   16.83
+    light  ink      #26143c  selected   #ebe1fe   13.41
+    light  soft     #55426f  page       #fdfaf5    8.42
+    light  soft     #55426f  sidebar    #f6f2fe    7.95
+    light  soft     #55426f  hover      #f1ecfd    7.58
+    light  soft     #55426f  active     #fff6e1    8.15
+    light  soft     #55426f  raised     #ffffff    8.77
+    light  soft     #55426f  selected   #ebe1fe    6.99
+    light  softer   #6b5a82  page       #fdfaf5    5.91
+    light  softer   #6b5a82  sidebar    #f6f2fe    5.59
+    light  softer   #6b5a82  hover      #f1ecfd    5.32
+    light  softer   #6b5a82  active     #fff6e1    5.72
+    light  softer   #6b5a82  raised     #ffffff    6.16
+    light  softer   #6b5a82  selected   #ebe1fe    4.91
+    dark   ink      #edeffe  page       #12143a   15.48
+    dark   ink      #edeffe  sidebar    #1a1f4a   13.73
+    dark   ink      #edeffe  hover      #2a366b   10.00
+    dark   ink      #edeffe  active     #222a5a   11.88
+    dark   ink      #edeffe  raised     #222a5a   11.88
+    dark   ink      #edeffe  selected   #343663    9.91
+    dark   soft     #c3c8e8  page       #12143a   10.74
+    dark   soft     #c3c8e8  sidebar    #1a1f4a    9.52
+    dark   soft     #c3c8e8  hover      #2a366b    6.93
+    dark   soft     #c3c8e8  active     #222a5a    8.24
+    dark   soft     #c3c8e8  raised     #222a5a    8.24
+    dark   soft     #c3c8e8  selected   #343663    6.88
+    dark   softer   #a4abd4  page       #12143a    7.88
+    dark   softer   #a4abd4  sidebar    #1a1f4a    6.99
+    dark   softer   #a4abd4  hover      #2a366b    5.09
+    dark   softer   #a4abd4  active     #222a5a    6.05
+    dark   softer   #a4abd4  raised     #222a5a    6.05
+    dark   softer   #a4abd4  selected   #343663    5.05
+    pill   purple   #553b69  lavender   #d6c1ff    5.84
+    pill   green    #2a533c  mint       #9ef5cf    6.84
+    pill   pink     #68354e  pink       #ffc2da    6.33
+    pill   orange   #6a4222  peach      #ffcab0    5.93
+    pill   blue     #264a72  sky        #b2dcff    6.32
+    pill   yellow   #655121  butter     #fef4b4    6.84
+    tick   plum     #441d68  mint       #9ef5cf   10.12
+    Worst pair: 4.91 (softer on selected, light).
+  contrast:end
 */
 
 @-moz-document domain("notion.so"), domain("www.notion.so"), domain("notion.com"), domain("app.notion.com"), domain("notion.site") {
 
-  @plum: #4b1d52;
-  @plumSoft: #b89cc4;
-  @ink: #2d1231;
-  @lavender: #ddccff;
-  @mint: #a8efd0;
-  @pink: #ffd0e4;
-  @peach: #ffd3bf;
-  @sky: #c7dff9;
-  @butter: #f8f4c8;
+  /* generated: palette */
+  /* from the Blueberry Sunrise root c43009bd2242; never edit by hand */
+  @ground: #fdfaf5;
+  @pane: #f6f2fe;
+  @surface: #ffffff;
+  @raised: #ffffff;
+  @glow: #fff6e1;
+  @sunk: #f1ecfd;
+  @rule: #d3c6ef;
+  @edge: #441d68;
+  @lip: #441d68;
+  @text: #26143c;
+  @text2: #55426f;
+  @text3: #6b5a82;
+  @ink: #26143c;
+  @pink: #ffc2da;
+  @peach: #ffcab0;
+  @butter: #fef4b4;
+  @mint: #9ef5cf;
+  @sky: #b2dcff;
+  @lav: #d6c1ff;
+  @lavTint: #ede2ff;
+  @lavShade: #ad95f7;
+  @nightGround: #12143a;
+  @nightPane: #1a1f4a;
+  @nightSurface: #222a5a;
+  @nightRaised: #2a366b;
+  @nightGlow: #2c3e77;
+  @nightSunk: #101134;
+  @nightRule: #3d497b;
+  @nightEdge: #8f9ad7;
+  @nightLip: #05051c;
+  @nightText: #edeffe;
+  @nightText2: #c3c8e8;
+  @nightText3: #a4abd4;
+  /* end: palette */
 
   /* ============ SECTION A: robust, on by default ============ */
 
@@ -93,43 +141,45 @@
      Notion's own rule without !important. Notion's high contrast mode (the
      data-contrast attribute on body) is left completely alone. */
   & when (@vivColours = 1) {
+    /* generated: themes */
     :root:not([data-contrast="high"]),
     .notion-light-theme.notion-light-theme:not([data-contrast="high"], [data-contrast="high"] *) {
       --c-bacPri: @vivPageLight;
-      --c-bacSec: color-mix(in srgb, @vivAccent 30%, @vivPageLight);
-      --c-bacTer: color-mix(in srgb, @vivAccent 55%, @vivPageLight);
-      --c-bacInt: color-mix(in srgb, @vivAccent 16%, @vivPageLight);
-      --c-bacEle: #ffffff;
-      --c-popBac: #ffffff;
-      --cd-boaIteDefBac: #ffffff;
-      --cd-colGalPreCarBac: #ffffff;
-      --cd-tabHeaRowColBac: color-mix(in srgb, @vivAccent 16%, @vivPageLight);
-      --c-texPri: #2d1231;
-      --c-texSec: #59425e;
-      --c-texTer: #6a5470;
-      --c-texAccPri: #59425e;
-      --c-borPri: color-mix(in srgb, @vivAccent 45%, @vivPageLight);
-      --c-borSec: color-mix(in srgb, @vivAccent 30%, @vivPageLight);
-      --c-borStr: color-mix(in srgb, @vivAccent 75%, @plum);
+      --c-bacSec: @pane;
+      --c-bacTer: @sunk;
+      --c-bacInt: @glow;
+      --c-bacEle: @surface;
+      --c-popBac: @surface;
+      --cd-boaIteDefBac: @surface;
+      --cd-colGalPreCarBac: @surface;
+      --cd-tabHeaRowColBac: @pane;
+      --c-texPri: @text;
+      --c-texSec: @text2;
+      --c-texTer: @text3;
+      --c-texAccPri: @text2;
+      --c-borPri: @rule;
+      --c-borSec: @lavTint;
+      --c-borStr: @lavShade;
     }
     .notion-dark-theme.notion-dark-theme:not([data-contrast="high"], [data-contrast="high"] *) {
       --c-bacPri: @vivPageDark;
-      --c-bacSec: color-mix(in srgb, @vivAccent 7%, @vivPageDark);
-      --c-bacTer: color-mix(in srgb, @vivAccent 18%, @vivPageDark);
-      --c-bacInt: color-mix(in srgb, @vivAccent 11%, @vivPageDark);
-      --c-bacEle: color-mix(in srgb, @vivAccent 10%, @vivPageDark);
-      --c-popBac: color-mix(in srgb, @vivAccent 10%, @vivPageDark);
-      --cd-boaIteDefBac: color-mix(in srgb, @vivAccent 10%, @vivPageDark);
-      --cd-colGalPreCarBac: color-mix(in srgb, @vivAccent 10%, @vivPageDark);
-      --cd-tabHeaRowColBac: color-mix(in srgb, @vivAccent 11%, @vivPageDark);
-      --c-texPri: #f7eefa;
-      --c-texSec: #d8c8de;
-      --c-texTer: #c4b0cb;
-      --c-texAccPri: #d8c8de;
-      --c-borPri: color-mix(in srgb, @vivAccent 20%, @vivPageDark);
-      --c-borSec: color-mix(in srgb, @vivAccent 14%, @vivPageDark);
-      --c-borStr: color-mix(in srgb, @vivAccent 35%, @vivPageDark);
+      --c-bacSec: @nightPane;
+      --c-bacTer: @nightRaised;
+      --c-bacInt: @nightSurface;
+      --c-bacEle: @nightSurface;
+      --c-popBac: @nightSurface;
+      --cd-boaIteDefBac: @nightSurface;
+      --cd-colGalPreCarBac: @nightSurface;
+      --cd-tabHeaRowColBac: @nightPane;
+      --c-texPri: @nightText;
+      --c-texSec: @nightText2;
+      --c-texTer: @nightText3;
+      --c-texAccPri: @nightText2;
+      --c-borPri: @nightRule;
+      --c-borSec: @nightRaised;
+      --c-borStr: @nightEdge;
     }
+    /* end: themes */
   }
 
   /* A2. Full width. VERIFIED: a normal page's grid is a div with the single
@@ -183,7 +233,9 @@
     .vivFace("Segoe UI Variable Display");
   }
 
-  /* B2. Outlined cards and callouts, the block look from my number bar.
+  /* B2. Outlined cards and callouts, the block look from my number bar: a
+     plum outline and lip in light, a hairline and a lip of deeper night in
+     dark (no coloured outline round boxes at night).
      Drawn with box-shadow so no card changes size. VERIFIED: gallery and
      board items carry .notion-collection-item inside .notion-gallery-view or
      .notion-board-view, and callouts are .notion-callout-block. BEST: the
@@ -194,12 +246,12 @@
     .notion-board-view .notion-collection-item > a,
     .notion-callout-block > div:first-child {
       border-radius: @vivRadius !important;
-      box-shadow: 0 0 0 2px @plum, 0 3px 0 2px @plum !important;
+      box-shadow: 0 0 0 2px @edge, 0 3px 0 2px @lip !important;
     }
     .notion-dark-theme .notion-gallery-view .notion-collection-item > a,
     .notion-dark-theme .notion-board-view .notion-collection-item > a,
     .notion-dark-theme .notion-callout-block > div:first-child {
-      box-shadow: 0 0 0 2px @plumSoft, 0 3px 0 2px @plumSoft !important;
+      box-shadow: 0 0 0 1.5px @nightRule, 0 3px 0 1.5px @nightLip !important;
     }
   }
 
@@ -208,14 +260,16 @@
      pill shape itself has no stable hook, so only the colours change. Red,
      gray and brown are left alone on purpose. */
   & when (@vivPills = 1) {
+    /* generated: pills */
     .notion-light-theme.notion-light-theme:not([data-contrast="high"], [data-contrast="high"] *) {
-      --c-purBacTer: @lavender;
-      --c-pinBacTer: @pink;
+      --c-purBacTer: @lav;
       --c-greBacTer: @mint;
+      --c-pinBacTer: @pink;
+      --c-oraBacTer: @peach;
       --c-bluBacTer: @sky;
       --c-yelBacTer: @butter;
-      --c-oraBacTer: @peach;
     }
+    /* end: pills */
   }
 
   /* B4. Calmer tables. VERIFIED: .notion-table-view-cell and
@@ -237,22 +291,22 @@
     .notion-page-content div:has(> input[type="checkbox"]),
     .notion-collection-view-body div:has(> input[type="checkbox"]) {
       border-radius: 6px !important;
-      border-color: @plum !important;
-      box-shadow: inset 0 0 0 1px @plum;
+      border-color: @edge !important;
+      box-shadow: inset 0 0 0 1px @edge;
     }
     .notion-dark-theme .notion-page-content div:has(> input[type="checkbox"]),
     .notion-dark-theme .notion-collection-view-body div:has(> input[type="checkbox"]) {
-      border-color: @plumSoft !important;
-      box-shadow: inset 0 0 0 1px @plumSoft;
+      border-color: @nightEdge !important;
+      box-shadow: inset 0 0 0 1px @nightEdge;
     }
     .notion-page-content div:has(> input[type="checkbox"]:checked),
     .notion-collection-view-body div:has(> input[type="checkbox"]:checked) {
       background: @mint !important;
-      box-shadow: inset 0 0 0 2px @plum;
+      box-shadow: inset 0 0 0 2px @edge;
     }
     .notion-page-content div:has(> input[type="checkbox"]:checked) svg,
     .notion-collection-view-body div:has(> input[type="checkbox"]:checked) svg {
-      fill: @plum !important;
+      fill: @edge !important;
     }
   }
 
@@ -268,19 +322,21 @@
   }
 
   /* B7. Quiet sidebar. VERIFIED: section titles, selected row and section
-     wash are these three variables. Soft plum titles instead of small grey,
-     a lavender selected row, no extra wash. */
+     wash are these three variables. My softer text for titles instead of
+     small grey, a lavender selected row, no extra wash. */
   & when (@vivSidebar = 1) {
+    /* generated: sidebar */
     .notion-light-theme.notion-light-theme:not([data-contrast="high"], [data-contrast="high"] *) {
-      --c-sidSecCol: #6a5470;
-      --ca-sidIteSelBac: color-mix(in srgb, @vivAccent 60%, transparent);
+      --c-sidSecCol: @text3;
+      --ca-sidIteSelBac: color-mix(in srgb, @vivAccent 35%, transparent);
       --ca-sidSecBac: transparent;
     }
     .notion-dark-theme.notion-dark-theme:not([data-contrast="high"], [data-contrast="high"] *) {
-      --c-sidSecCol: #c4b0cb;
+      --c-sidSecCol: @nightText3;
       --ca-sidIteSelBac: color-mix(in srgb, @vivAccent 14%, transparent);
       --ca-sidSecBac: transparent;
     }
+    /* end: sidebar */
   }
 
   /* B8. Ticked to-dos fade to my softer text, still 5:1 or better.
