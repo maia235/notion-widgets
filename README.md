@@ -29,7 +29,9 @@ Light is the sunrise (sunlight on cream, cool violet shadow, clean pastel blocks
 
 Or use the ready-made `.bs-block` and `.bs-button` (`.bs-button.primary` for the main one). Give a block a hue with `data-hue="pink"` (`peach`, `butter`, `mint`, `sky`, `lav`). `.bs-sky` paints a page's open ground (the sunrise, or the still star field), `.bs-ribbon` is the rainbow hairline under a top bar, `.bs-veiled` puts the night veil over a picture.
 
-`blueberry-sunrise.html` shows every swatch and a sample block and buttons, light and dark side by side.
+Open ground takes `.bs-sky`: my flat cream by day; by night the sky fades from deepest at the top to a lighter horizon (fixed to the window) under the still stars. The dunes and the crescent are two small pictures: copy them inline from `blueberry-sunrise.html` into the region marked `.has-dunes` (the dunes sit at its foot, the crescent in its top right margin, by night only). Never inside a card, a panel or a table, and never behind writing.
+
+`blueberry-sunrise.html` shows every swatch, a sample block and buttons, and the dunes and the crescent, light and dark side by side.
 
 ## The Vivarium style for Notion
 

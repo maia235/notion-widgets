@@ -49,5 +49,7 @@ const styles = [...page.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(m => m[1]).
   [...page.matchAll(/style="([^"]*)"/g)].map(m => m[1]).join(";");
 assert(!/#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i.test(styles), "the page's styles hold no raw colour");
 assert(page.includes('data-theme="light"') && page.includes('data-theme="dark"'), "both themes side by side");
-assert(!/<script|https?:\/\//.test(page.replace(/<!--[\s\S]*?-->/g, "")), "no scripts and no requests");
+assert(!/<script|https?:\/\//.test(page.replace(/<!--[\s\S]*?-->/g, "").replaceAll('xmlns="http://www.w3.org/2000/svg"', "")),
+  "no scripts and no requests");
+assert(page.includes('class="motif-dunes"') && page.includes('class="motif-moon"'), "the page carries the dunes and the crescent");
 console.log(`ok (Blueberry Sunrise ${head[1]}, ${light.size} tokens a theme)`);

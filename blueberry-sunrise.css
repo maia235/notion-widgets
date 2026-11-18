@@ -1,6 +1,6 @@
-/* Blueberry Sunrise 1.0.0: a design system, as one self-contained file of CSS custom properties.
+/* Blueberry Sunrise 1.1.0: a design system, as one self-contained file of CSS custom properties.
 
-   GENERATED from the Blueberry Sunrise root c43009bd2242; never edit this file by hand (a change here is overwritten by
+   GENERATED from the Blueberry Sunrise root 248a7db7ffb6; never edit this file by hand (a change here is overwritten by
    the next generation).
 
    Light is the sunrise: sunlight on cream, cool violet shadow, clean pastel blocks in a plum outline. Dark is the
@@ -15,7 +15,7 @@
 
    Contrast, worked out for every pair of writing or mark that can occur (WCAG ratio; body text 4.5 or better,
    large text, outlines and marks 3 or better):
-   354 pairs, every one passing; the full table is in the record. The lowest of each kind:
+   426 pairs, every one passing; the full table is in the record. The lowest of each kind:
    light  writing  lav:hue-wash-line on lav:hue-fill #5d3bbc on #d6c1ff   4.59  (floor 4.5)
    light  mark     amber-line on amber              #9c5300 on #ffb66c   3.33  (floor 3)
    dark   writing  text-2 on sky-tint               #c3c8e8 on #005792   4.59  (floor 4.5)
@@ -83,10 +83,20 @@
   --star-butter: transparent; --star-pink: transparent; --star-sky: transparent;
   /* the prism: my rainbow in its true order, for one thin ribbon a screen */
   --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--sky), var(--lav));
-  /* the background motif: a wash of sunlight from the top of the page. Use: background-color: var(--ground); background-image: var(--motif); background-size: var(--motif-size) */
-  --motif:
-    radial-gradient(ellipse 70% 46% at 50% 0%, var(--glow) 0%, transparent 100%);
-  --motif-size: 100% 100%;
+  /* the sky: my flat cream (it never fades by day); the dunes and the sun at the foot carry the day. Use .bs-sky */
+  --sky-foot: var(--ground);  /* the sky at the horizon: by day the cream itself */
+  --motif: none;
+  --motif-size: auto;
+  --motif-attachment: scroll;
+  /* the day dunes (the dunes picture in app/web/motifs.js): each band a wash of one of my hues on the cream */
+  --dune-far: #f2eaff;  /* the far dune: the cool shadow side */
+  --dune-mid: #ffe9ee;  /* the second dune: pink */
+  --dune-near: #ffe9da;  /* the third dune: peach */
+  --dune-front: #fff0cd;  /* the nearest dune: butter, nearest the sun's light */
+  --dune-crest: #ffffff;  /* the pale crest and spine lines */
+  --dune-sun: #fff6c4;  /* the flat sun behind the far dune */
+  --star-geo: transparent;  /* the eight-pointed stars are the night's */
+  --moon: transparent;  /* the crescent is the night's */
   /* how it is worn: in light, every block and control wears my plum outline and a plum lip */
   --bar: var(--surface);  /* the top bar and a resolved row */
   --block-line: var(--edge);  /* the outline of a block: a card, a panel's edge, a picture */
@@ -143,8 +153,7 @@
     /* mint: the measure for the others */
     --mint-wash: #0e3351; --mint-tint: #0a4d66; --mint: #9bf4cf; --mint-shade: #43bba7; --mint-line: #9bf4cf;
     --mint-on-wash: var(--text); --mint-on-wash-2: var(--text-2); --mint-wash-line: var(--mint-line); --mint-wash-mark: var(--mint); --mint-on-mark: var(--ink); --mint-wash-lip: var(--mint-shade);
-    /* sky: A, a clean azure, its own colour, clear of the ground's indigo; my choice between A and B (in key
-       with the ground) is still OPEN: these two values may change */
+    /* sky: a clean azure, its own colour, clear of the ground's indigo */
     --sky-wash: #004479; --sky-tint: #005792; --sky: #a9d9ff; --sky-shade: #5e9ce0; --sky-line: #b6dfff;
     --sky-on-wash: var(--text); --sky-on-wash-2: var(--text-2); --sky-wash-line: var(--sky-line); --sky-wash-mark: var(--sky); --sky-on-mark: var(--ink); --sky-wash-lip: var(--sky-shade);
     /* lav: clear violet */
@@ -169,8 +178,13 @@
     --star-butter: #fcf1aa; --star-pink: #ffbcd8; --star-sky: #a9d9ff;
     /* the prism: my rainbow in its true order, for one thin ribbon a screen */
     --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--sky), var(--lav));
-    /* the background motif: a still star field over the sky; it never moves. Use: background-color: var(--ground); background-image: var(--motif); background-size: var(--motif-size) */
+    /* the sky fades: deepest at the top (--backdrop), my indigo in the reading area (--ground), a step lighter and a
+       touch bluer at the horizon (--sky-foot). My own request: one of the system's own effects */
+    --sky-foot: #151b48;  /* the sky at the horizon */
+    /* the background motif: the fade and the haze belong to the window (the horizon is always at the foot of the view),
+       the still star field scrolls with the page; it never moves. Use .bs-sky */
     --motif:
+      linear-gradient(0deg, rgba(21, 27, 72, 0.62) 0%, rgba(21, 27, 72, 0) 40%),
       radial-gradient(circle at 41px 62px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
       radial-gradient(circle at 203px 151px, var(--star-1) 0, var(--star-1) 0.75px, transparent 1.45px),
       radial-gradient(circle at 318px 277px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
@@ -190,8 +204,18 @@
       radial-gradient(circle at 127px 96px, var(--star-butter) 0, var(--star-butter) 1.25px, transparent 1.95px),
       radial-gradient(circle at 512px 331px, var(--star-pink) 0, var(--star-pink) 1.15px, transparent 1.85px),
       radial-gradient(circle at 301px 487px, var(--star-sky) 0, var(--star-sky) 1.2px, transparent 1.90px),
-      linear-gradient(180deg, var(--backdrop) 0%, var(--ground) 46%, var(--ground) 100%);
-    --motif-size: 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, 100% 100%;
+      linear-gradient(180deg in oklab, var(--backdrop) 0%, var(--ground) 46%, var(--sky-foot) 82%, var(--sky-foot) 100%);
+    --motif-size: 100% 100%, 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, 100% 100%;
+    --motif-attachment: fixed, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, fixed;
+    /* the night horizon: the dunes picture wears these at night (its sun is hidden) */
+    --dune-far: #16183f;  /* the far dune, a shade under the horizon sky: a silhouette */
+    --dune-mid: #171a43;  /* the second dune */
+    --dune-near: #181c46;  /* the third dune */
+    --dune-front: #191e4a;  /* the nearest dune */
+    --dune-crest: #242c5e;  /* the thin crest and spine lines */
+    --dune-sun: transparent;
+    --star-geo: #919ad0;  /* the eight-pointed stars above the horizon */
+    --moon: #fcf1aa;  /* the crescent and its one small star: butter, like the day's sun */
     /* how it is worn: at night a block is a step of sky with a starlight hairline; no coloured outline round boxes */
     --bar: var(--pane);
     --block-line: var(--rule);
@@ -248,8 +272,7 @@
   /* mint: the measure for the others */
   --mint-wash: #0e3351; --mint-tint: #0a4d66; --mint: #9bf4cf; --mint-shade: #43bba7; --mint-line: #9bf4cf;
   --mint-on-wash: var(--text); --mint-on-wash-2: var(--text-2); --mint-wash-line: var(--mint-line); --mint-wash-mark: var(--mint); --mint-on-mark: var(--ink); --mint-wash-lip: var(--mint-shade);
-  /* sky: A, a clean azure, its own colour, clear of the ground's indigo; my choice between A and B (in key
-     with the ground) is still OPEN: these two values may change */
+  /* sky: a clean azure, its own colour, clear of the ground's indigo */
   --sky-wash: #004479; --sky-tint: #005792; --sky: #a9d9ff; --sky-shade: #5e9ce0; --sky-line: #b6dfff;
   --sky-on-wash: var(--text); --sky-on-wash-2: var(--text-2); --sky-wash-line: var(--sky-line); --sky-wash-mark: var(--sky); --sky-on-mark: var(--ink); --sky-wash-lip: var(--sky-shade);
   /* lav: clear violet */
@@ -274,8 +297,13 @@
   --star-butter: #fcf1aa; --star-pink: #ffbcd8; --star-sky: #a9d9ff;
   /* the prism: my rainbow in its true order, for one thin ribbon a screen */
   --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--sky), var(--lav));
-  /* the background motif: a still star field over the sky; it never moves. Use: background-color: var(--ground); background-image: var(--motif); background-size: var(--motif-size) */
+  /* the sky fades: deepest at the top (--backdrop), my indigo in the reading area (--ground), a step lighter and a
+     touch bluer at the horizon (--sky-foot). My own request: one of the system's own effects */
+  --sky-foot: #151b48;  /* the sky at the horizon */
+  /* the background motif: the fade and the haze belong to the window (the horizon is always at the foot of the view),
+     the still star field scrolls with the page; it never moves. Use .bs-sky */
   --motif:
+    linear-gradient(0deg, rgba(21, 27, 72, 0.62) 0%, rgba(21, 27, 72, 0) 40%),
     radial-gradient(circle at 41px 62px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
     radial-gradient(circle at 203px 151px, var(--star-1) 0, var(--star-1) 0.75px, transparent 1.45px),
     radial-gradient(circle at 318px 277px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
@@ -295,8 +323,18 @@
     radial-gradient(circle at 127px 96px, var(--star-butter) 0, var(--star-butter) 1.25px, transparent 1.95px),
     radial-gradient(circle at 512px 331px, var(--star-pink) 0, var(--star-pink) 1.15px, transparent 1.85px),
     radial-gradient(circle at 301px 487px, var(--star-sky) 0, var(--star-sky) 1.2px, transparent 1.90px),
-    linear-gradient(180deg, var(--backdrop) 0%, var(--ground) 46%, var(--ground) 100%);
-  --motif-size: 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, 100% 100%;
+    linear-gradient(180deg in oklab, var(--backdrop) 0%, var(--ground) 46%, var(--sky-foot) 82%, var(--sky-foot) 100%);
+  --motif-size: 100% 100%, 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, 100% 100%;
+  --motif-attachment: fixed, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, fixed;
+  /* the night horizon: the dunes picture wears these at night (its sun is hidden) */
+  --dune-far: #16183f;  /* the far dune, a shade under the horizon sky: a silhouette */
+  --dune-mid: #171a43;  /* the second dune */
+  --dune-near: #181c46;  /* the third dune */
+  --dune-front: #191e4a;  /* the nearest dune */
+  --dune-crest: #242c5e;  /* the thin crest and spine lines */
+  --dune-sun: transparent;
+  --star-geo: #919ad0;  /* the eight-pointed stars above the horizon */
+  --moon: #fcf1aa;  /* the crescent and its one small star: butter, like the day's sun */
   /* how it is worn: at night a block is a step of sky with a starlight hairline; no coloured outline round boxes */
   --bar: var(--pane);
   --block-line: var(--rule);
@@ -416,6 +454,7 @@
   --lift-left: -5px 0 0; /* a drawer lifts toward the page it covers */
   --glint: inset 0 1px 0; /* the line of starlight caught on a block's top edge: var(--glint) var(--starlight) */
   --ring-width: 3px; --ring-offset: 3px;
+  --dunes-h: 260px; --moon-size: 36px;  /* the dune band's height (the picture is cropped at the sides, never stretched) and the crescent */
 
   /* motion */
   --dur-press: .08s; --dur-change: .15s; --dur-pop: .24s; --dur-grow: .4s; --dur-leaf: .7s;
@@ -426,10 +465,15 @@
 }
 
 /* ---------- ready-made: the sky, the ribbon, the night veil, and the block ---------- */
-.bs-sky { background-color: var(--ground); background-image: var(--motif); background-size: var(--motif-size); }
+.bs-sky { background-color: var(--ground); background-image: var(--motif); background-size: var(--motif-size); background-attachment: var(--motif-attachment); }
 .bs-ribbon { height: var(--ribbon); background: var(--prism); }
 .bs-veiled { position: relative; }
 .bs-veiled::after { content: ""; position: absolute; inset: 0; background: var(--veil); mix-blend-mode: multiply; pointer-events: none; border-radius: inherit; }
+.has-dunes { position: relative; isolation: isolate; }
+.motif-dunes { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: var(--dunes-h); z-index: -1; pointer-events: none; display: block; }
+.motif-dunes.at-window { position: fixed; }
+.motif-moon { display: none; position: absolute; top: var(--space-10); right: var(--space-6); width: var(--moon-size); height: auto; z-index: -1; pointer-events: none; }
+:root[data-theme="dark"] .motif-moon { display: block; }
 .bs-block { background: var(--surface); color: var(--text); border: var(--block-width) solid var(--block-line); border-radius: var(--radius-card); box-shadow: var(--glint) var(--starlight), var(--lift-3) var(--lip); }
 .bs-block[data-hue] { background: var(--hue-fill); color: var(--hue-text); box-shadow: var(--glint) var(--starlight), var(--lift-3) var(--hue-lip); }
 .bs-button { min-height: var(--tap); padding: 0 var(--space-8); border: var(--outline-thin) solid var(--control-line); border-radius: var(--radius-m); background: var(--raised); color: var(--text); font: inherit; font-weight: var(--fw-semi); box-shadow: var(--glint) var(--starlight), var(--lift-2) var(--lip); }
