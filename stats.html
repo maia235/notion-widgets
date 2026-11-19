@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-m9hhujggSDaaWOkDzIqS+Xc4XOV4tZ2HPXUQ2zK8Cak='; style-src 'self' 'sha256-WUNEJp3Ty32QbIeJPWhKEZGMsQg94AYU2hbVJCVWymI='; font-src data:; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-m9hhujggSDaaWOkDzIqS+Xc4XOV4tZ2HPXUQ2zK8Cak='; style-src 'self' 'sha256-vdOfliP/8+dGNZNfEc40HuBSrSgvC+QMuvxJPrWp4ms='; font-src data:; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Number Bar</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="fira-sans.css">
@@ -18,8 +18,8 @@
   body { font-family: "Fira Sans", system-ui, sans-serif; padding: 4px 6px 10px; }
   .bar { display: flex; gap: 12px; }                       /* one row across, never stacked (20 Nov 2026) */
   .bar > * { flex: 1 1 0; min-width: 0; }
-  .label { font-size: 12px; font-weight: 500; color: var(--label); margin: 0 0 5px 3px;
-           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .label { font-size: 12px; font-weight: 500; color: var(--label); margin: 0 0 5px 3px; line-height: 1.2;
+           min-height: 2.4em; overflow-wrap: anywhere; }           /* the whole label, on two lines when narrow */
   .card { border: 2px solid var(--edge); border-radius: 12px; box-shadow: 0 3px 0 var(--lip);
           height: 52px; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .num { font-size: 24px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
