@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-m9hhujggSDaaWOkDzIqS+Xc4XOV4tZ2HPXUQ2zK8Cak='; style-src 'self' 'sha256-BzPS3MBnHz64Hpl1nfh+9Bfr6kfoopJfvYGcQEcviMY='; font-src data:; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-m9hhujggSDaaWOkDzIqS+Xc4XOV4tZ2HPXUQ2zK8Cak='; style-src 'self' 'sha256-WUNEJp3Ty32QbIeJPWhKEZGMsQg94AYU2hbVJCVWymI='; font-src data:; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Number Bar</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="fira-sans.css">
@@ -16,7 +16,8 @@
   * { box-sizing: border-box; margin: 0; }
   html, body { background: transparent; }
   body { font-family: "Fira Sans", system-ui, sans-serif; padding: 4px 6px 10px; }
-  .bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr)); gap: 10px 12px; }
+  .bar { display: flex; gap: 12px; }                       /* one row across, never stacked (20 Nov 2026) */
+  .bar > * { flex: 1 1 0; min-width: 0; }
   .label { font-size: 12px; font-weight: 500; color: var(--label); margin: 0 0 5px 3px;
            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .card { border: 2px solid var(--edge); border-radius: 12px; box-shadow: 0 3px 0 var(--lip);
