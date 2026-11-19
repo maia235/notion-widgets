@@ -1,6 +1,6 @@
-/* Blueberry Sunrise 1.1.0: a design system, as one self-contained file of CSS custom properties.
+/* Blueberry Sunrise 1.4.0: a design system, as one self-contained file of CSS custom properties.
 
-   GENERATED from the Blueberry Sunrise root d240ffb88b76; never edit this file by hand (a change here is overwritten by
+   GENERATED from the Blueberry Sunrise root 8491c1f3dd1b; never edit this file by hand (a change here is overwritten by
    the next generation).
 
    Light is the sunrise: sunlight on cream, cool violet shadow, clean pastel blocks in a plum outline. Dark is the
@@ -10,16 +10,19 @@
    How to use it: link this file first, then read only the role tokens (var(--text), var(--surface), var(--edge) and
    so on), never raw values. Light is the default. Dark follows the system setting, and data-theme="dark" or
    data-theme="light" on the page, or on any element, forces a theme for that element and everything inside it.
-   A block that wears a hue says so with data-hue="pink" (peach, butter, mint, sky, lav) and reads --hue-fill,
-   --hue-text, --hue-lip and the rest. .bs-sky, .bs-ribbon, .bs-veiled and .bs-block are ready-made.
+   A block that wears a hue says so with data-hue="pink" (peach, butter, mint, aqua, sky, lav, cream), or with its
+   wing (data-hue="plans", me, home, people, stream, growing, library, viv: colour is the wing), and reads --hue-fill,
+   --hue-text, --hue-lip and the rest. .bs-ribbon, .bs-veiled and .bs-block are ready-made, and so is the scenery:
+   class="bs-sky" on a column or panel wears the whole sky (by day the sun, its rings, the dunes and motes; by night
+   the fade, the stars, the dune horizon and the crescent), class="bs-sky at-window" on a page that scrolls.
 
    Contrast, worked out for every pair of writing or mark that can occur (WCAG ratio; body text 4.5 or better,
    large text, outlines and marks 3 or better):
-   426 pairs, every one passing; the full table is in the record. The lowest of each kind:
+   699 pairs, every one passing; the full table is in the record. The lowest of each kind:
    light  writing  lav:hue-wash-line on lav:hue-fill #5d3bbc on #d6c1ff   4.59  (floor 4.5)
    light  mark     amber-line on amber              #9c5300 on #ffb66c   3.33  (floor 3)
-   dark   writing  text-2 on sky-tint               #c3c8e8 on #005792   4.59  (floor 4.5)
-   dark   mark     edge on glow                     #8f9ad7 on #2c3e77   3.77  (floor 3)
+   dark   writing  ink-2 on amber                   #55426f on #ffb66c   5.08  (floor 4.5)
+   dark   mark     lav:hue-ring on lav:hue-fill     #6642cb on #c4adef   3.30  (floor 3)
 */
 
 /* ---------- light: the default, and any element with data-theme="light" ---------- */
@@ -48,22 +51,29 @@
   --paper: #ffffff;  /* the inner box on a pastel card */
   --primary: #441d68;  /* the main button */
   --on-primary: #ffffff;  /* text on the main button */
-  /* the six hues, each with its own ramp: wash, tint, solid (the bare name), shade, line; then how a block filled
-     with the hue is written on: its writing, secondary writing, the hue as writing, its marks (the main button, a
-     filled bar, a done step) and the writing on them, and the block's lip. In light every block takes ink, plum
-     marks and my plum lip */
+  /* the seven hues (aqua joined on 19 Nov) and cream, each with its own ramp: wash, tint, solid (the bare name),
+     shade, line; then how a block filled with the hue is written on: its writing, secondary writing, the hue as
+     writing, its marks (the main button, a filled bar, a done step) and the writing on them, and the block's lip;
+     then its two other depths: pale (a small question, a filed line) and deep (a hard deadline, my Focus). In light
+     every block takes ink, plum marks and my plum lip */
   --pink-wash: #fff2f5; --pink-tint: #ffe3eb; --pink: #ffc2da; --pink-shade: #ed92ca; --pink-line: #8c2d7f;
-  --pink-on-wash: var(--ink); --pink-on-wash-2: var(--ink-2); --pink-wash-line: var(--pink-line); --pink-wash-mark: var(--primary); --pink-on-mark: var(--on-primary); --pink-wash-lip: var(--lip);
+  --pink-on-wash: var(--ink); --pink-on-wash-2: var(--ink-2); --pink-wash-line: var(--pink-line); --pink-wash-mark: var(--primary); --pink-on-mark: var(--on-primary); --pink-wash-lip: var(--lip); --pink-pale: var(--pink-wash); --pink-deep: #f9a8cb;
   --peach-wash: #fff3ea; --peach-tint: #fee6d5; --peach: #ffcab0; --peach-shade: #fc9e88; --peach-line: #882547;
-  --peach-on-wash: var(--ink); --peach-on-wash-2: var(--ink-2); --peach-wash-line: var(--peach-line); --peach-wash-mark: var(--primary); --peach-on-mark: var(--on-primary); --peach-wash-lip: var(--lip);
+  --peach-on-wash: var(--ink); --peach-on-wash-2: var(--ink-2); --peach-wash-line: var(--peach-line); --peach-wash-mark: var(--primary); --peach-on-mark: var(--on-primary); --peach-wash-lip: var(--lip); --peach-pale: var(--peach-wash); --peach-deep: #feb391;
   --butter-wash: #fefbe4; --butter-tint: #fef9cf; --butter: #fef4b4; --butter-shade: #fbd774; --butter-line: #552463;
-  --butter-on-wash: var(--ink); --butter-on-wash-2: var(--ink-2); --butter-wash-line: var(--butter-line); --butter-wash-mark: var(--primary); --butter-on-mark: var(--on-primary); --butter-wash-lip: var(--lip);
+  --butter-on-wash: var(--ink); --butter-on-wash-2: var(--ink-2); --butter-wash-line: var(--butter-line); --butter-wash-mark: var(--primary); --butter-on-mark: var(--on-primary); --butter-wash-lip: var(--lip); --butter-pale: var(--butter-wash); --butter-deep: #fae387;
   --mint-wash: #e6fdf0; --mint-tint: #cafce2; --mint: #9ef5cf; --mint-shade: #59dac1; --mint-line: #006263;
-  --mint-on-wash: var(--ink); --mint-on-wash-2: var(--ink-2); --mint-wash-line: var(--mint-line); --mint-wash-mark: var(--primary); --mint-on-mark: var(--on-primary); --mint-wash-lip: var(--lip);
+  --mint-on-wash: var(--ink); --mint-on-wash-2: var(--ink-2); --mint-wash-line: var(--mint-line); --mint-wash-mark: var(--primary); --mint-on-mark: var(--on-primary); --mint-wash-lip: var(--lip); --mint-pale: var(--mint-wash); --mint-deep: #79e4be;
+  /* aqua: the seventh hue (19 Nov), a clear pool between mint and sky; it is Stream's */
+  --aqua-wash: #e7fbfe; --aqua-tint: #ccf8fd; --aqua: #98eff9; --aqua-shade: #51c3d6; --aqua-line: #00576e;
+  --aqua-on-wash: var(--ink); --aqua-on-wash-2: var(--ink-2); --aqua-wash-line: var(--aqua-line); --aqua-wash-mark: var(--primary); --aqua-on-mark: var(--on-primary); --aqua-wash-lip: var(--lip); --aqua-pale: var(--aqua-wash); --aqua-deep: #6ddeed;
   --sky-wash: #edf8fe; --sky-tint: #d9effe; --sky: #b2dcff; --sky-shade: #81b8f9; --sky-line: #2b55ae;
-  --sky-on-wash: var(--ink); --sky-on-wash-2: var(--ink-2); --sky-wash-line: var(--sky-line); --sky-wash-mark: var(--primary); --sky-on-mark: var(--on-primary); --sky-wash-lip: var(--lip);
+  --sky-on-wash: var(--ink); --sky-on-wash-2: var(--ink-2); --sky-wash-line: var(--sky-line); --sky-wash-mark: var(--primary); --sky-on-mark: var(--on-primary); --sky-wash-lip: var(--lip); --sky-pale: var(--sky-wash); --sky-deep: #8fc9fd;
   --lav-wash: #f7f2fe; --lav-tint: #ede2ff; --lav: #d6c1ff; --lav-shade: #ad95f7; --lav-line: #5d3bbc;
-  --lav-on-wash: var(--ink); --lav-on-wash-2: var(--ink-2); --lav-wash-line: var(--lav-line); --lav-wash-mark: var(--primary); --lav-on-mark: var(--on-primary); --lav-wash-lip: var(--lip);
+  --lav-on-wash: var(--ink); --lav-on-wash-2: var(--ink-2); --lav-wash-line: var(--lav-line); --lav-wash-mark: var(--primary); --lav-on-mark: var(--on-primary); --lav-wash-lip: var(--lip); --lav-pale: var(--lav-wash); --lav-deep: #c3aafb;
+  /* cream: not a hue of the rainbow. Paper, for what belongs to no wing: Opal and the Viv itself. By day the white block */
+  --cream-wash: #ffffff; --cream-tint: #f6f2fe; --cream: #ffffff; --cream-shade: #d3c6ef; --cream-line: #441d68;
+  --cream-on-wash: var(--ink); --cream-on-wash-2: var(--ink-2); --cream-wash-line: var(--cream-line); --cream-wash-mark: var(--primary); --cream-on-mark: var(--on-primary); --cream-wash-lip: var(--lip); --cream-pale: var(--cream-wash); --cream-deep: #ece4fd;
   /* signals, outside the rainbow */
   --red: #ce033f;  /* a true problem, always with words */
   --red-wash: #ffeaec;  /* the quiet fill behind a problem */
@@ -82,23 +92,42 @@
   --star-1: transparent; --star-2: transparent; --star-3: transparent;
   --star-butter: transparent; --star-pink: transparent; --star-sky: transparent;
   /* the prism: my rainbow in its true order, for one thin ribbon a screen */
-  --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--sky), var(--lav));
-  /* the sky: my flat cream (it never fades by day); the dunes and the sun at the foot carry the day. Use .bs-sky */
+  --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--aqua), var(--sky), var(--lav));
+  /* the scenery's colours. It is drawn once, in app/web/scenery.css, and a page wears it with .bs-sky. By day the sky
+     is my cream under soft muted fields of colour, top to bottom: washes above, the dunes and the sun at the foot.
+     A background is never linework (my law, 19 Nov) */
+  --sky-top: var(--ground);  /* the top of the sky: by day the cream itself */
   --sky-foot: var(--ground);  /* the sky at the horizon: by day the cream itself */
-  --motif: none;
-  --motif-size: auto;
-  --motif-attachment: scroll;
-  /* the day dunes (the dunes picture in app/web/motifs.js): each band a wash of one of my hues on the cream */
+  --haze: transparent; --haze-clear: transparent;  /* the haze over the horizon is the night's */
+  /* the day dunes: each band a wash of one of my hues on the cream */
   --dune-far: #f2eaff;  /* the far dune: the cool shadow side */
   --dune-mid: #ffe9ee;  /* the second dune: pink */
   --dune-near: #ffe9da;  /* the third dune: peach */
   --dune-front: #fff0cd;  /* the nearest dune: butter, nearest the sun's light */
-  --dune-crest: #ffffff;  /* the pale crest and spine lines */
-  --dune-sun: #fff6c4;  /* the flat sun behind the far dune */
-  --star-geo: transparent;  /* the eight-pointed stars are the night's */
-  --moon: transparent;  /* the crescent is the night's */
-  /* how it is worn: in light, every block and control wears my plum outline and a plum lip */
+  --dune-sun: #fff6c4;  /* the sun behind the far dune: one soft flat disc */
+  /* the fields of the sky: wide soft washes of my six hues, all the way up the column. Never a line, a ring or a speck */
+  --field-pink: var(--pink-wash); --field-peach: var(--peach-wash); --field-butter: var(--butter-wash);
+  --field-mint: var(--mint-wash); --field-sky: var(--sky-wash); --field-lav: var(--lav-wash);
+  /* the dune horizon, the eight-pointed stars and the crescent are the night's */
+  --horizon-far: transparent; --horizon-mid: transparent; --horizon-near: transparent; --horizon-front: transparent;
+  --horizon-crest: transparent;
+  --star-geo: transparent;
+  --moon: transparent;
+  /* inside a lit block: by day a block is already lit, so these are the day's own; the night sets them */
+  --lit-text: var(--text); --lit-text-2: var(--text-2); --lit-text-3: var(--text-3); --lit-surface: var(--surface); --lit-raised: var(--raised); --lit-bar: var(--bar); --lit-input: var(--input); --lit-sunk: var(--sunk); --lit-glow: var(--glow); --lit-pill: var(--pill); --lit-on-pill: var(--on-pill); --lit-rule: var(--rule); --lit-edge: var(--edge); --lit-lip: var(--lip); --lit-track: var(--track); --lit-primary: var(--primary); --lit-on-primary: var(--on-primary); --lit-primary-lip: var(--primary-lip); --lit-tool: var(--tool); --lit-ring: var(--ring); --lit-block-line: var(--block-line); --lit-control-line: var(--control-line); --lit-hair-line: var(--hair-line); --lit-starlight: var(--starlight); --lit-red: var(--red); --lit-on-red: var(--on-red); --lit-red-line: var(--red-line); --lit-red-wash: var(--red-wash); --lit-amber-wash: var(--amber-wash); --lit-amber-line: var(--amber-line);
+  --plum: #441d68;  /* my plum, the same in both themes: the marks on a lit block */
+  --heavy-line: var(--ink);  /* the outline of the heaviest block: a hard deadline, my Focus */
+  /* how it is worn: in light, every block and control wears my plum outline and a plum lip.
+     Three weights of line, and each thing wears exactly one (the record: "Line weights"):
+     1. the hairline (--hair-width, --hair-line): structure I should barely see. The chat's stem, the rule beside a
+        date, a section's dashed rule, the line between two columns, the edge under a header
+     2. the line (--line-width, with --block-line or --control-line): a thing I press or type in that is not a
+        block. A row, a stub, an input, a message, a box inside a block, a bar's track
+     3. the block (--block-width, --block-line, and a lip under it): only what should feel solid. A card, the main
+        button, a button inside a card */
   --bar: var(--surface);  /* the top bar and a resolved row */
+  --hair-width: var(--outline-hair);
+  --hair-line: var(--rule);  /* the colour of a hairline: quiet, never the plum */
   --block-line: var(--edge);  /* the outline of a block: a card, a panel's edge, a picture */
   --block-width: var(--outline);
   --line-width: var(--outline-thin);  /* a box inside a block, a message, a quiet row */
@@ -136,29 +165,34 @@
     --paper: #edeffe;  /* the brightest fill, small things only */
     --primary: #d4bdff;  /* the main button: lavender light */
     --on-primary: #26143c;  /* text on the main button */
-    /* the six hues, each with its own ramp: wash (a card lit by the hue), tint (its chips and bar tracks), solid (the
-       glow), shade (the lip), line (the hue as writing), then how a block filled with the hue is written on. Wash and
-       tint are each hue's own values, set by hand (final, 18 Nov), all six 5% back toward the raised night. Two
-       are LIT, butter and peach: a dark yellow or orange is brown, so their blocks are light lanterns with ink
-       writing, plum marks and night boxes; the other four are night blocks where the hue arrives only as light */
-    /* pink: rose-berry */
-    --pink-wash: #571a43; --pink-tint: #742e5c; --pink: #ffbcd8; --pink-shade: #d576b3; --pink-line: #ffc7de;
-    --pink-on-wash: var(--text); --pink-on-wash-2: var(--text-2); --pink-wash-line: var(--pink-line); --pink-wash-mark: var(--pink); --pink-on-mark: var(--ink); --pink-wash-lip: var(--pink-shade);
-    /* peach: LIT: a lit apricot-orange (a dark orange is brown) */
-    --peach-wash: #eea16d; --peach-tint: #ffc6ab; --peach: #ffc6ab; --peach-shade: #e47d6d; --peach-line: #ffcfb9;
-    --peach-on-wash: #26143c; --peach-on-wash-2: #4b3765; --peach-wash-line: #441d68; --peach-wash-mark: #441d68; --peach-on-mark: #ffffff; --peach-wash-lip: #ffc6ab;
-    /* butter: LIT: moonlit gold (a dark yellow is brown) */
-    --butter-wash: #cbb46c; --butter-tint: #fcf1aa; --butter: #fcf1aa; --butter-shade: #e4b65c; --butter-line: #fcf1aa;
-    --butter-on-wash: #26143c; --butter-on-wash-2: #4b3765; --butter-wash-line: #441d68; --butter-wash-mark: #441d68; --butter-on-mark: #ffffff; --butter-wash-lip: #fcf1aa;
-    /* mint: the measure for the others */
-    --mint-wash: #0e3351; --mint-tint: #0a4d66; --mint: #9bf4cf; --mint-shade: #43bba7; --mint-line: #9bf4cf;
-    --mint-on-wash: var(--text); --mint-on-wash-2: var(--text-2); --mint-wash-line: var(--mint-line); --mint-wash-mark: var(--mint); --mint-on-mark: var(--ink); --mint-wash-lip: var(--mint-shade);
-    /* sky: a clean azure, its own colour, clear of the ground's indigo */
-    --sky-wash: #004479; --sky-tint: #005792; --sky: #a9d9ff; --sky-shade: #5e9ce0; --sky-line: #b6dfff;
-    --sky-on-wash: var(--text); --sky-on-wash-2: var(--text-2); --sky-wash-line: var(--sky-line); --sky-wash-mark: var(--sky); --sky-on-mark: var(--ink); --sky-wash-lip: var(--sky-shade);
-    /* lav: clear violet */
-    --lav-wash: #391c63; --lav-tint: #513183; --lav: #d4bdff; --lav-shade: #927be2; --lav-line: #dbcaff;
-    --lav-on-wash: var(--text); --lav-on-wash-2: var(--text-2); --lav-wash-line: var(--lav-line); --lav-wash-mark: var(--lav); --lav-on-mark: var(--ink); --lav-wash-lip: var(--lav-shade);
+    /* the seven hues and cream at night. A block is a LIT WINDOW (19 Nov): wash is the window's fill, a soft luminous
+       pastel written on in ink; tint and the solid are the pastel itself (the pill, the lip, the other buttons);
+       shade is the edge of its boxes and its bar's track; line is the hue as writing on the night; pale and deep
+       are its two other depths. One rule for all of them; every value set by hand, by eye, on real pages */
+    /* rose */
+    --pink-wash: #e9a7c3; --pink-tint: #ffbcd8; --pink: #ffbcd8; --pink-shade: #d576b3; --pink-line: #ffc7de;
+    --pink-on-wash: var(--ink); --pink-on-wash-2: #4b3765; --pink-wash-line: var(--plum); --pink-wash-mark: var(--plum); --pink-on-mark: #ffffff; --pink-wash-lip: var(--pink); --pink-pale: #ffe5ef; --pink-deep: #d987ac;
+    /* apricot */
+    --peach-wash: #f2b493; --peach-tint: #ffc6ab; --peach: #ffc6ab; --peach-shade: #e47d6d; --peach-line: #ffcfb9;
+    --peach-on-wash: var(--ink); --peach-on-wash-2: #4b3765; --peach-wash-line: var(--plum); --peach-wash-mark: var(--plum); --peach-on-mark: #ffffff; --peach-wash-lip: var(--peach); --peach-pale: #ffe8db; --peach-deep: #e89771;
+    /* moonlit gold */
+    --butter-wash: #eadc96; --butter-tint: #fcf1aa; --butter: #fcf1aa; --butter-shade: #e4b65c; --butter-line: #fcf1aa;
+    --butter-on-wash: var(--ink); --butter-on-wash-2: #4b3765; --butter-wash-line: var(--plum); --butter-wash-mark: var(--plum); --butter-on-mark: #ffffff; --butter-wash-lip: var(--butter); --butter-pale: #f8f2d2; --butter-deep: #e4c76c;
+    /* mint */
+    --mint-wash: #89dbbe; --mint-tint: #9bf4cf; --mint: #9bf4cf; --mint-shade: #43bba7; --mint-line: #9bf4cf;
+    --mint-on-wash: var(--ink); --mint-on-wash-2: #4b3765; --mint-wash-line: var(--plum); --mint-wash-mark: var(--plum); --mint-on-mark: #ffffff; --mint-wash-lip: var(--mint); --mint-pale: #d7f6ea; --mint-deep: #5dc2a5;
+    /* aqua: a clear pool, between mint and sky */
+    --aqua-wash: #8fe4f0; --aqua-tint: #96f1fb; --aqua: #96f1fb; --aqua-shade: #39b7cb; --aqua-line: #a3eff7;
+    --aqua-on-wash: var(--ink); --aqua-on-wash-2: #4b3765; --aqua-wash-line: var(--plum); --aqua-wash-mark: var(--plum); --aqua-on-mark: #ffffff; --aqua-wash-lip: var(--aqua); --aqua-pale: #d4f6fb; --aqua-deep: #63ccdd;
+    /* a clean azure */
+    --sky-wash: #97c7f1; --sky-tint: #a9d9ff; --sky: #a9d9ff; --sky-shade: #5e9ce0; --sky-line: #b6dfff;
+    --sky-on-wash: var(--ink); --sky-on-wash-2: #4b3765; --sky-wash-line: var(--plum); --sky-wash-mark: var(--plum); --sky-on-mark: #ffffff; --sky-wash-lip: var(--sky); --sky-pale: #ddefff; --sky-deep: #71ace2;
+    /* clear violet */
+    --lav-wash: #c4adef; --lav-tint: #d4bdff; --lav: #d4bdff; --lav-shade: #927be2; --lav-line: #dbcaff;
+    --lav-on-wash: var(--ink); --lav-on-wash-2: #4b3765; --lav-wash-line: var(--plum); --lav-wash-mark: var(--plum); --lav-on-mark: #ffffff; --lav-wash-lip: var(--lav); --lav-pale: #eee7ff; --lav-deep: #aa8ee0;
+    /* cream: moonlit paper, for Opal and the Viv itself (not a hue of the rainbow) */
+    --cream-wash: #e6e1f5; --cream-tint: #f6f3fd; --cream: #f6f3fd; --cream-shade: #b3a6dc; --cream-line: #edeffe;
+    --cream-on-wash: var(--ink); --cream-on-wash-2: #4b3765; --cream-wash-line: var(--plum); --cream-wash-mark: var(--plum); --cream-on-mark: #ffffff; --cream-wash-lip: var(--cream); --cream-pale: #f6f3fd; --cream-deep: #cdc3ee;
     /* signals, outside the rainbow */
     --red: #fc5c71;  /* a true problem, always with words */
     --red-wash: #222a5a;  /* the quiet fill behind a problem: plain night; the red is the band and the tag */
@@ -177,47 +211,64 @@
     --star-1: #edeffe; --star-2: #8e97cf; --star-3: #565f9c;
     --star-butter: #fcf1aa; --star-pink: #ffbcd8; --star-sky: #a9d9ff;
     /* the prism: my rainbow in its true order, for one thin ribbon a screen */
-    --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--sky), var(--lav));
-    /* the sky fades: deepest at the top (--backdrop), my indigo in the reading area (--ground), a step lighter and a
-       touch bluer at the horizon (--sky-foot). My own request: one of the system's own effects */
+    --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--aqua), var(--sky), var(--lav));
+    /* the scenery's colours (drawn once, in app/web/scenery.css; worn with .bs-sky). The sky fades: deepest at the top
+       (--sky-top), my indigo in the reading area (--ground), a step lighter and a touch bluer at the horizon
+       (--sky-foot), under a haze. My own request: one of the system's own effects. The fade and the haze belong to the
+       window (the horizon is always at the foot of the view), the still star field scrolls with the page; it never moves */
+    --sky-top: var(--backdrop);  /* the top of the sky: the zenith */
     --sky-foot: #151b48;  /* the sky at the horizon */
-    /* the background motif: the fade and the haze belong to the window (the horizon is always at the foot of the view),
-       the still star field scrolls with the page; it never moves. Use .bs-sky */
-    --motif:
-      linear-gradient(0deg, rgba(21, 27, 72, 0.62) 0%, rgba(21, 27, 72, 0) 40%),
-      radial-gradient(circle at 41px 62px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
-      radial-gradient(circle at 203px 151px, var(--star-1) 0, var(--star-1) 0.75px, transparent 1.45px),
-      radial-gradient(circle at 318px 277px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
-      radial-gradient(circle at 23px 190px, var(--star-2) 0, var(--star-2) 0.8px, transparent 1.50px),
-      radial-gradient(circle at 97px 44px, var(--star-2) 0, var(--star-2) 0.7px, transparent 1.40px),
-      radial-gradient(circle at 171px 133px, var(--star-2) 0, var(--star-2) 0.8px, transparent 1.50px),
-      radial-gradient(circle at 239px 211px, var(--star-2) 0, var(--star-2) 0.7px, transparent 1.40px),
-      radial-gradient(circle at 31px 23px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
-      radial-gradient(circle at 88px 121px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
-      radial-gradient(circle at 139px 71px, var(--star-3) 0, var(--star-3) 0.6px, transparent 1.30px),
-      radial-gradient(circle at 150px 170px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
-      radial-gradient(circle at 17px 97px, var(--star-3) 0, var(--star-3) 0.55px, transparent 1.25px),
-      radial-gradient(circle at 74px 31px, var(--star-3) 0, var(--star-3) 0.6px, transparent 1.30px),
-      radial-gradient(circle at 112px 128px, var(--star-3) 0, var(--star-3) 0.55px, transparent 1.25px),
-      radial-gradient(circle at 366px 58px, var(--star-1) 0, var(--star-1) 1.05px, transparent 1.75px),
-      radial-gradient(circle at 121px 340px, var(--star-1) 0, var(--star-1) 0.8px, transparent 1.50px),
-      radial-gradient(circle at 127px 96px, var(--star-butter) 0, var(--star-butter) 1.25px, transparent 1.95px),
-      radial-gradient(circle at 512px 331px, var(--star-pink) 0, var(--star-pink) 1.15px, transparent 1.85px),
-      radial-gradient(circle at 301px 487px, var(--star-sky) 0, var(--star-sky) 1.2px, transparent 1.90px),
-      linear-gradient(180deg in oklab, var(--backdrop) 0%, var(--ground) 46%, var(--sky-foot) 82%, var(--sky-foot) 100%);
-    --motif-size: 100% 100%, 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, 100% 100%;
-    --motif-attachment: fixed, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, fixed;
-    /* the night horizon: the dunes picture wears these at night (its sun is hidden) */
-    --dune-far: #16183f;  /* the far dune, a shade under the horizon sky: a silhouette */
-    --dune-mid: #171a43;  /* the second dune */
-    --dune-near: #181c46;  /* the third dune */
-    --dune-front: #191e4a;  /* the nearest dune */
-    --dune-crest: #242c5e;  /* the thin crest and spine lines */
-    --dune-sun: transparent;
+    --haze: rgba(21, 27, 72, 0.62); --haze-clear: rgba(21, 27, 72, 0);  /* the haze over the horizon, clearing as it rises */
+    /* the night horizon: a faint line of dunes at the foot of the sky */
+    --horizon-far: #16183f;  /* the far dune, a shade under the horizon sky: a silhouette */
+    --horizon-mid: #171a43;  /* the second dune */
+    --horizon-near: #181c46;  /* the third dune */
+    --horizon-front: #191e4a;  /* the nearest dune */
+    --horizon-crest: #242c5e;  /* the thin crest and spine lines */
     --star-geo: #919ad0;  /* the eight-pointed stars above the horizon */
     --moon: #fcf1aa;  /* the crescent and its one small star: butter, like the day's sun */
-    /* how it is worn: at night a block is a step of sky with a starlight hairline; no coloured outline round boxes */
+    /* the day dunes, the sun and the fields of the sky are the day's */
+    --dune-far: transparent; --dune-mid: transparent; --dune-near: transparent; --dune-front: transparent;
+    --dune-sun: transparent;
+    --field-pink: transparent; --field-peach: transparent; --field-butter: transparent;
+    --field-mint: transparent; --field-sky: transparent; --field-lav: transparent;
+    /* inside a lit block the layers and the writing are paper's: a lit window is a small piece of day */
+    --lit-text: #26143c;  /* writing */
+    --lit-text-2: #4b3765;  /* secondary writing */
+    --lit-text-3: #5f4d7c;  /* hints */
+    --lit-surface: #e6e1f5;  /* a plain block: moonlit paper */
+    --lit-raised: #f6f3fd;  /* a control on it */
+    --lit-bar: #e6e1f5;  /* a resolved row */
+    --lit-input: #fbfaff;  /* a field or a box inside it */
+    --lit-sunk: #f1ecfd;  /* a well */
+    --lit-glow: #fff6e1;  /* where light pools */
+    --lit-pill: #f6f3fd;  /* a label pill */
+    --lit-on-pill: #26143c;  /* writing on it */
+    --lit-rule: #b3a6dc;  /* dividers and edges */
+    --lit-edge: #441d68;  /* the outline of a control */
+    --lit-lip: #b3a6dc;  /* the lip under it */
+    --lit-track: #fbfaff;  /* an empty bar */
+    --lit-primary: #441d68;  /* the main button */
+    --lit-on-primary: #ffffff;  /* writing on it */
+    --lit-primary-lip: #26143c;  /* its lip */
+    --lit-tool: #d4bdff;  /* a tool button */
+    --lit-ring: #6642cb;  /* the focus ring */
+    --lit-block-line: #b3a6dc;  /* the outline of a block */
+    --lit-control-line: #b3a6dc;  /* the outline of a control */
+    --lit-hair-line: #b3a6dc;  /* a hairline */
+    --lit-starlight: transparent;  /* no glint on paper */
+    --lit-red: #ce033f;  /* a true problem */
+    --lit-on-red: #ffffff;  /* writing on red */
+    --lit-red-line: #ba0135;  /* red as writing */
+    --lit-red-wash: #ffeaec;  /* the quiet fill behind a problem */
+    --lit-amber-wash: #fff4e0;  /* the quiet fill behind due soon */
+    --lit-amber-line: #9c5300;  /* amber as line and icon */
+    --plum: #441d68;
+    --heavy-line: #fbfaff;  /* the heaviest block's outline is starlight at night */
+    /* how it is worn: at night the open ground is the sky, and every block on it is a lit window */
     --bar: var(--pane);
+    --hair-width: var(--outline-hair);
+    --hair-line: var(--rule);  /* a hairline is the quiet divider's own colour */
     --block-line: var(--rule);
     --block-width: var(--outline-hair);
     --line-width: var(--outline-hair);
@@ -255,29 +306,34 @@
   --paper: #edeffe;  /* the brightest fill, small things only */
   --primary: #d4bdff;  /* the main button: lavender light */
   --on-primary: #26143c;  /* text on the main button */
-  /* the six hues, each with its own ramp: wash (a card lit by the hue), tint (its chips and bar tracks), solid (the
-     glow), shade (the lip), line (the hue as writing), then how a block filled with the hue is written on. Wash and
-     tint are each hue's own values, set by hand (final, 18 Nov), all six 5% back toward the raised night. Two
-     are LIT, butter and peach: a dark yellow or orange is brown, so their blocks are light lanterns with ink
-     writing, plum marks and night boxes; the other four are night blocks where the hue arrives only as light */
-  /* pink: rose-berry */
-  --pink-wash: #571a43; --pink-tint: #742e5c; --pink: #ffbcd8; --pink-shade: #d576b3; --pink-line: #ffc7de;
-  --pink-on-wash: var(--text); --pink-on-wash-2: var(--text-2); --pink-wash-line: var(--pink-line); --pink-wash-mark: var(--pink); --pink-on-mark: var(--ink); --pink-wash-lip: var(--pink-shade);
-  /* peach: LIT: a lit apricot-orange (a dark orange is brown) */
-  --peach-wash: #eea16d; --peach-tint: #ffc6ab; --peach: #ffc6ab; --peach-shade: #e47d6d; --peach-line: #ffcfb9;
-  --peach-on-wash: #26143c; --peach-on-wash-2: #4b3765; --peach-wash-line: #441d68; --peach-wash-mark: #441d68; --peach-on-mark: #ffffff; --peach-wash-lip: #ffc6ab;
-  /* butter: LIT: moonlit gold (a dark yellow is brown) */
-  --butter-wash: #cbb46c; --butter-tint: #fcf1aa; --butter: #fcf1aa; --butter-shade: #e4b65c; --butter-line: #fcf1aa;
-  --butter-on-wash: #26143c; --butter-on-wash-2: #4b3765; --butter-wash-line: #441d68; --butter-wash-mark: #441d68; --butter-on-mark: #ffffff; --butter-wash-lip: #fcf1aa;
-  /* mint: the measure for the others */
-  --mint-wash: #0e3351; --mint-tint: #0a4d66; --mint: #9bf4cf; --mint-shade: #43bba7; --mint-line: #9bf4cf;
-  --mint-on-wash: var(--text); --mint-on-wash-2: var(--text-2); --mint-wash-line: var(--mint-line); --mint-wash-mark: var(--mint); --mint-on-mark: var(--ink); --mint-wash-lip: var(--mint-shade);
-  /* sky: a clean azure, its own colour, clear of the ground's indigo */
-  --sky-wash: #004479; --sky-tint: #005792; --sky: #a9d9ff; --sky-shade: #5e9ce0; --sky-line: #b6dfff;
-  --sky-on-wash: var(--text); --sky-on-wash-2: var(--text-2); --sky-wash-line: var(--sky-line); --sky-wash-mark: var(--sky); --sky-on-mark: var(--ink); --sky-wash-lip: var(--sky-shade);
-  /* lav: clear violet */
-  --lav-wash: #391c63; --lav-tint: #513183; --lav: #d4bdff; --lav-shade: #927be2; --lav-line: #dbcaff;
-  --lav-on-wash: var(--text); --lav-on-wash-2: var(--text-2); --lav-wash-line: var(--lav-line); --lav-wash-mark: var(--lav); --lav-on-mark: var(--ink); --lav-wash-lip: var(--lav-shade);
+  /* the seven hues and cream at night. A block is a LIT WINDOW (19 Nov): wash is the window's fill, a soft luminous
+     pastel written on in ink; tint and the solid are the pastel itself (the pill, the lip, the other buttons);
+     shade is the edge of its boxes and its bar's track; line is the hue as writing on the night; pale and deep
+     are its two other depths. One rule for all of them; every value set by hand, by eye, on real pages */
+  /* rose */
+  --pink-wash: #e9a7c3; --pink-tint: #ffbcd8; --pink: #ffbcd8; --pink-shade: #d576b3; --pink-line: #ffc7de;
+  --pink-on-wash: var(--ink); --pink-on-wash-2: #4b3765; --pink-wash-line: var(--plum); --pink-wash-mark: var(--plum); --pink-on-mark: #ffffff; --pink-wash-lip: var(--pink); --pink-pale: #ffe5ef; --pink-deep: #d987ac;
+  /* apricot */
+  --peach-wash: #f2b493; --peach-tint: #ffc6ab; --peach: #ffc6ab; --peach-shade: #e47d6d; --peach-line: #ffcfb9;
+  --peach-on-wash: var(--ink); --peach-on-wash-2: #4b3765; --peach-wash-line: var(--plum); --peach-wash-mark: var(--plum); --peach-on-mark: #ffffff; --peach-wash-lip: var(--peach); --peach-pale: #ffe8db; --peach-deep: #e89771;
+  /* moonlit gold */
+  --butter-wash: #eadc96; --butter-tint: #fcf1aa; --butter: #fcf1aa; --butter-shade: #e4b65c; --butter-line: #fcf1aa;
+  --butter-on-wash: var(--ink); --butter-on-wash-2: #4b3765; --butter-wash-line: var(--plum); --butter-wash-mark: var(--plum); --butter-on-mark: #ffffff; --butter-wash-lip: var(--butter); --butter-pale: #f8f2d2; --butter-deep: #e4c76c;
+  /* mint */
+  --mint-wash: #89dbbe; --mint-tint: #9bf4cf; --mint: #9bf4cf; --mint-shade: #43bba7; --mint-line: #9bf4cf;
+  --mint-on-wash: var(--ink); --mint-on-wash-2: #4b3765; --mint-wash-line: var(--plum); --mint-wash-mark: var(--plum); --mint-on-mark: #ffffff; --mint-wash-lip: var(--mint); --mint-pale: #d7f6ea; --mint-deep: #5dc2a5;
+  /* aqua: a clear pool, between mint and sky */
+  --aqua-wash: #8fe4f0; --aqua-tint: #96f1fb; --aqua: #96f1fb; --aqua-shade: #39b7cb; --aqua-line: #a3eff7;
+  --aqua-on-wash: var(--ink); --aqua-on-wash-2: #4b3765; --aqua-wash-line: var(--plum); --aqua-wash-mark: var(--plum); --aqua-on-mark: #ffffff; --aqua-wash-lip: var(--aqua); --aqua-pale: #d4f6fb; --aqua-deep: #63ccdd;
+  /* a clean azure */
+  --sky-wash: #97c7f1; --sky-tint: #a9d9ff; --sky: #a9d9ff; --sky-shade: #5e9ce0; --sky-line: #b6dfff;
+  --sky-on-wash: var(--ink); --sky-on-wash-2: #4b3765; --sky-wash-line: var(--plum); --sky-wash-mark: var(--plum); --sky-on-mark: #ffffff; --sky-wash-lip: var(--sky); --sky-pale: #ddefff; --sky-deep: #71ace2;
+  /* clear violet */
+  --lav-wash: #c4adef; --lav-tint: #d4bdff; --lav: #d4bdff; --lav-shade: #927be2; --lav-line: #dbcaff;
+  --lav-on-wash: var(--ink); --lav-on-wash-2: #4b3765; --lav-wash-line: var(--plum); --lav-wash-mark: var(--plum); --lav-on-mark: #ffffff; --lav-wash-lip: var(--lav); --lav-pale: #eee7ff; --lav-deep: #aa8ee0;
+  /* cream: moonlit paper, for Opal and the Viv itself (not a hue of the rainbow) */
+  --cream-wash: #e6e1f5; --cream-tint: #f6f3fd; --cream: #f6f3fd; --cream-shade: #b3a6dc; --cream-line: #edeffe;
+  --cream-on-wash: var(--ink); --cream-on-wash-2: #4b3765; --cream-wash-line: var(--plum); --cream-wash-mark: var(--plum); --cream-on-mark: #ffffff; --cream-wash-lip: var(--cream); --cream-pale: #f6f3fd; --cream-deep: #cdc3ee;
   /* signals, outside the rainbow */
   --red: #fc5c71;  /* a true problem, always with words */
   --red-wash: #222a5a;  /* the quiet fill behind a problem: plain night; the red is the band and the tag */
@@ -296,47 +352,64 @@
   --star-1: #edeffe; --star-2: #8e97cf; --star-3: #565f9c;
   --star-butter: #fcf1aa; --star-pink: #ffbcd8; --star-sky: #a9d9ff;
   /* the prism: my rainbow in its true order, for one thin ribbon a screen */
-  --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--sky), var(--lav));
-  /* the sky fades: deepest at the top (--backdrop), my indigo in the reading area (--ground), a step lighter and a
-     touch bluer at the horizon (--sky-foot). My own request: one of the system's own effects */
+  --prism: linear-gradient(90deg in oklab, var(--pink), var(--peach), var(--butter), var(--mint), var(--aqua), var(--sky), var(--lav));
+  /* the scenery's colours (drawn once, in app/web/scenery.css; worn with .bs-sky). The sky fades: deepest at the top
+     (--sky-top), my indigo in the reading area (--ground), a step lighter and a touch bluer at the horizon
+     (--sky-foot), under a haze. My own request: one of the system's own effects. The fade and the haze belong to the
+     window (the horizon is always at the foot of the view), the still star field scrolls with the page; it never moves */
+  --sky-top: var(--backdrop);  /* the top of the sky: the zenith */
   --sky-foot: #151b48;  /* the sky at the horizon */
-  /* the background motif: the fade and the haze belong to the window (the horizon is always at the foot of the view),
-     the still star field scrolls with the page; it never moves. Use .bs-sky */
-  --motif:
-    linear-gradient(0deg, rgba(21, 27, 72, 0.62) 0%, rgba(21, 27, 72, 0) 40%),
-    radial-gradient(circle at 41px 62px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
-    radial-gradient(circle at 203px 151px, var(--star-1) 0, var(--star-1) 0.75px, transparent 1.45px),
-    radial-gradient(circle at 318px 277px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
-    radial-gradient(circle at 23px 190px, var(--star-2) 0, var(--star-2) 0.8px, transparent 1.50px),
-    radial-gradient(circle at 97px 44px, var(--star-2) 0, var(--star-2) 0.7px, transparent 1.40px),
-    radial-gradient(circle at 171px 133px, var(--star-2) 0, var(--star-2) 0.8px, transparent 1.50px),
-    radial-gradient(circle at 239px 211px, var(--star-2) 0, var(--star-2) 0.7px, transparent 1.40px),
-    radial-gradient(circle at 31px 23px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
-    radial-gradient(circle at 88px 121px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
-    radial-gradient(circle at 139px 71px, var(--star-3) 0, var(--star-3) 0.6px, transparent 1.30px),
-    radial-gradient(circle at 150px 170px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
-    radial-gradient(circle at 17px 97px, var(--star-3) 0, var(--star-3) 0.55px, transparent 1.25px),
-    radial-gradient(circle at 74px 31px, var(--star-3) 0, var(--star-3) 0.6px, transparent 1.30px),
-    radial-gradient(circle at 112px 128px, var(--star-3) 0, var(--star-3) 0.55px, transparent 1.25px),
-    radial-gradient(circle at 366px 58px, var(--star-1) 0, var(--star-1) 1.05px, transparent 1.75px),
-    radial-gradient(circle at 121px 340px, var(--star-1) 0, var(--star-1) 0.8px, transparent 1.50px),
-    radial-gradient(circle at 127px 96px, var(--star-butter) 0, var(--star-butter) 1.25px, transparent 1.95px),
-    radial-gradient(circle at 512px 331px, var(--star-pink) 0, var(--star-pink) 1.15px, transparent 1.85px),
-    radial-gradient(circle at 301px 487px, var(--star-sky) 0, var(--star-sky) 1.2px, transparent 1.90px),
-    linear-gradient(180deg in oklab, var(--backdrop) 0%, var(--ground) 46%, var(--sky-foot) 82%, var(--sky-foot) 100%);
-  --motif-size: 100% 100%, 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, 100% 100%;
-  --motif-attachment: fixed, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, fixed;
-  /* the night horizon: the dunes picture wears these at night (its sun is hidden) */
-  --dune-far: #16183f;  /* the far dune, a shade under the horizon sky: a silhouette */
-  --dune-mid: #171a43;  /* the second dune */
-  --dune-near: #181c46;  /* the third dune */
-  --dune-front: #191e4a;  /* the nearest dune */
-  --dune-crest: #242c5e;  /* the thin crest and spine lines */
-  --dune-sun: transparent;
+  --haze: rgba(21, 27, 72, 0.62); --haze-clear: rgba(21, 27, 72, 0);  /* the haze over the horizon, clearing as it rises */
+  /* the night horizon: a faint line of dunes at the foot of the sky */
+  --horizon-far: #16183f;  /* the far dune, a shade under the horizon sky: a silhouette */
+  --horizon-mid: #171a43;  /* the second dune */
+  --horizon-near: #181c46;  /* the third dune */
+  --horizon-front: #191e4a;  /* the nearest dune */
+  --horizon-crest: #242c5e;  /* the thin crest and spine lines */
   --star-geo: #919ad0;  /* the eight-pointed stars above the horizon */
   --moon: #fcf1aa;  /* the crescent and its one small star: butter, like the day's sun */
-  /* how it is worn: at night a block is a step of sky with a starlight hairline; no coloured outline round boxes */
+  /* the day dunes, the sun and the fields of the sky are the day's */
+  --dune-far: transparent; --dune-mid: transparent; --dune-near: transparent; --dune-front: transparent;
+  --dune-sun: transparent;
+  --field-pink: transparent; --field-peach: transparent; --field-butter: transparent;
+  --field-mint: transparent; --field-sky: transparent; --field-lav: transparent;
+  /* inside a lit block the layers and the writing are paper's: a lit window is a small piece of day */
+  --lit-text: #26143c;  /* writing */
+  --lit-text-2: #4b3765;  /* secondary writing */
+  --lit-text-3: #5f4d7c;  /* hints */
+  --lit-surface: #e6e1f5;  /* a plain block: moonlit paper */
+  --lit-raised: #f6f3fd;  /* a control on it */
+  --lit-bar: #e6e1f5;  /* a resolved row */
+  --lit-input: #fbfaff;  /* a field or a box inside it */
+  --lit-sunk: #f1ecfd;  /* a well */
+  --lit-glow: #fff6e1;  /* where light pools */
+  --lit-pill: #f6f3fd;  /* a label pill */
+  --lit-on-pill: #26143c;  /* writing on it */
+  --lit-rule: #b3a6dc;  /* dividers and edges */
+  --lit-edge: #441d68;  /* the outline of a control */
+  --lit-lip: #b3a6dc;  /* the lip under it */
+  --lit-track: #fbfaff;  /* an empty bar */
+  --lit-primary: #441d68;  /* the main button */
+  --lit-on-primary: #ffffff;  /* writing on it */
+  --lit-primary-lip: #26143c;  /* its lip */
+  --lit-tool: #d4bdff;  /* a tool button */
+  --lit-ring: #6642cb;  /* the focus ring */
+  --lit-block-line: #b3a6dc;  /* the outline of a block */
+  --lit-control-line: #b3a6dc;  /* the outline of a control */
+  --lit-hair-line: #b3a6dc;  /* a hairline */
+  --lit-starlight: transparent;  /* no glint on paper */
+  --lit-red: #ce033f;  /* a true problem */
+  --lit-on-red: #ffffff;  /* writing on red */
+  --lit-red-line: #ba0135;  /* red as writing */
+  --lit-red-wash: #ffeaec;  /* the quiet fill behind a problem */
+  --lit-amber-wash: #fff4e0;  /* the quiet fill behind due soon */
+  --lit-amber-line: #9c5300;  /* amber as line and icon */
+  --plum: #441d68;
+  --heavy-line: #fbfaff;  /* the heaviest block's outline is starlight at night */
+  /* how it is worn: at night the open ground is the sky, and every block on it is a lit window */
   --bar: var(--pane);
+  --hair-width: var(--outline-hair);
+  --hair-line: var(--rule);  /* a hairline is the quiet divider's own colour */
   --block-line: var(--rule);
   --block-width: var(--outline-hair);
   --line-width: var(--outline-hair);
@@ -351,25 +424,42 @@
 /* ---------- roles: which hue each part wears ---------- */
 :root {
   --wing-plans: var(--sky); --wing-me: var(--butter); --wing-home: var(--peach); --wing-people: var(--pink);
-  --wing-stream: var(--edge); --wing-growing: var(--mint); --wing-library: var(--lav);
-  --kind-focus: var(--mint); --kind-today: var(--butter); --kind-friends: var(--pink); --kind-win: var(--butter);
-  --kind-bad-day: var(--lav); --kind-admin: var(--sky); --kind-home: var(--peach); --kind-listening: var(--sky);
-  --kind-overdue: var(--red); --kind-due-soon: var(--amber);
+  --wing-stream: var(--aqua); --wing-growing: var(--mint); --wing-library: var(--lav); --wing-viv: var(--cream);
 }
 
 /* ---------- a block wearing a hue: data-hue on any element hands it the hue's five steps ---------- */
 [data-hue="pink"] { --hue: var(--pink); --hue-wash: var(--pink-wash); --hue-tint: var(--pink-tint); --hue-shade: var(--pink-shade); --hue-line: var(--pink-line);
-  --hue-on-wash: var(--pink-on-wash); --hue-on-wash-2: var(--pink-on-wash-2); --hue-wash-line: var(--pink-wash-line); --hue-wash-mark: var(--pink-wash-mark); --hue-on-mark: var(--pink-on-mark); --hue-wash-lip: var(--pink-wash-lip); }
+  --hue-on-wash: var(--pink-on-wash); --hue-on-wash-2: var(--pink-on-wash-2); --hue-wash-line: var(--pink-wash-line); --hue-wash-mark: var(--pink-wash-mark); --hue-on-mark: var(--pink-on-mark); --hue-wash-lip: var(--pink-wash-lip); --hue-pale: var(--pink-pale); --hue-deep: var(--pink-deep); }
 [data-hue="peach"] { --hue: var(--peach); --hue-wash: var(--peach-wash); --hue-tint: var(--peach-tint); --hue-shade: var(--peach-shade); --hue-line: var(--peach-line);
-  --hue-on-wash: var(--peach-on-wash); --hue-on-wash-2: var(--peach-on-wash-2); --hue-wash-line: var(--peach-wash-line); --hue-wash-mark: var(--peach-wash-mark); --hue-on-mark: var(--peach-on-mark); --hue-wash-lip: var(--peach-wash-lip); }
+  --hue-on-wash: var(--peach-on-wash); --hue-on-wash-2: var(--peach-on-wash-2); --hue-wash-line: var(--peach-wash-line); --hue-wash-mark: var(--peach-wash-mark); --hue-on-mark: var(--peach-on-mark); --hue-wash-lip: var(--peach-wash-lip); --hue-pale: var(--peach-pale); --hue-deep: var(--peach-deep); }
 [data-hue="butter"] { --hue: var(--butter); --hue-wash: var(--butter-wash); --hue-tint: var(--butter-tint); --hue-shade: var(--butter-shade); --hue-line: var(--butter-line);
-  --hue-on-wash: var(--butter-on-wash); --hue-on-wash-2: var(--butter-on-wash-2); --hue-wash-line: var(--butter-wash-line); --hue-wash-mark: var(--butter-wash-mark); --hue-on-mark: var(--butter-on-mark); --hue-wash-lip: var(--butter-wash-lip); }
+  --hue-on-wash: var(--butter-on-wash); --hue-on-wash-2: var(--butter-on-wash-2); --hue-wash-line: var(--butter-wash-line); --hue-wash-mark: var(--butter-wash-mark); --hue-on-mark: var(--butter-on-mark); --hue-wash-lip: var(--butter-wash-lip); --hue-pale: var(--butter-pale); --hue-deep: var(--butter-deep); }
 [data-hue="mint"] { --hue: var(--mint); --hue-wash: var(--mint-wash); --hue-tint: var(--mint-tint); --hue-shade: var(--mint-shade); --hue-line: var(--mint-line);
-  --hue-on-wash: var(--mint-on-wash); --hue-on-wash-2: var(--mint-on-wash-2); --hue-wash-line: var(--mint-wash-line); --hue-wash-mark: var(--mint-wash-mark); --hue-on-mark: var(--mint-on-mark); --hue-wash-lip: var(--mint-wash-lip); }
+  --hue-on-wash: var(--mint-on-wash); --hue-on-wash-2: var(--mint-on-wash-2); --hue-wash-line: var(--mint-wash-line); --hue-wash-mark: var(--mint-wash-mark); --hue-on-mark: var(--mint-on-mark); --hue-wash-lip: var(--mint-wash-lip); --hue-pale: var(--mint-pale); --hue-deep: var(--mint-deep); }
+[data-hue="aqua"] { --hue: var(--aqua); --hue-wash: var(--aqua-wash); --hue-tint: var(--aqua-tint); --hue-shade: var(--aqua-shade); --hue-line: var(--aqua-line);
+  --hue-on-wash: var(--aqua-on-wash); --hue-on-wash-2: var(--aqua-on-wash-2); --hue-wash-line: var(--aqua-wash-line); --hue-wash-mark: var(--aqua-wash-mark); --hue-on-mark: var(--aqua-on-mark); --hue-wash-lip: var(--aqua-wash-lip); --hue-pale: var(--aqua-pale); --hue-deep: var(--aqua-deep); }
 [data-hue="sky"] { --hue: var(--sky); --hue-wash: var(--sky-wash); --hue-tint: var(--sky-tint); --hue-shade: var(--sky-shade); --hue-line: var(--sky-line);
-  --hue-on-wash: var(--sky-on-wash); --hue-on-wash-2: var(--sky-on-wash-2); --hue-wash-line: var(--sky-wash-line); --hue-wash-mark: var(--sky-wash-mark); --hue-on-mark: var(--sky-on-mark); --hue-wash-lip: var(--sky-wash-lip); }
+  --hue-on-wash: var(--sky-on-wash); --hue-on-wash-2: var(--sky-on-wash-2); --hue-wash-line: var(--sky-wash-line); --hue-wash-mark: var(--sky-wash-mark); --hue-on-mark: var(--sky-on-mark); --hue-wash-lip: var(--sky-wash-lip); --hue-pale: var(--sky-pale); --hue-deep: var(--sky-deep); }
 [data-hue="lav"] { --hue: var(--lav); --hue-wash: var(--lav-wash); --hue-tint: var(--lav-tint); --hue-shade: var(--lav-shade); --hue-line: var(--lav-line);
-  --hue-on-wash: var(--lav-on-wash); --hue-on-wash-2: var(--lav-on-wash-2); --hue-wash-line: var(--lav-wash-line); --hue-wash-mark: var(--lav-wash-mark); --hue-on-mark: var(--lav-on-mark); --hue-wash-lip: var(--lav-wash-lip); }
+  --hue-on-wash: var(--lav-on-wash); --hue-on-wash-2: var(--lav-on-wash-2); --hue-wash-line: var(--lav-wash-line); --hue-wash-mark: var(--lav-wash-mark); --hue-on-mark: var(--lav-on-mark); --hue-wash-lip: var(--lav-wash-lip); --hue-pale: var(--lav-pale); --hue-deep: var(--lav-deep); }
+[data-hue="cream"] { --hue: var(--cream); --hue-wash: var(--cream-wash); --hue-tint: var(--cream-tint); --hue-shade: var(--cream-shade); --hue-line: var(--cream-line);
+  --hue-on-wash: var(--cream-on-wash); --hue-on-wash-2: var(--cream-on-wash-2); --hue-wash-line: var(--cream-wash-line); --hue-wash-mark: var(--cream-wash-mark); --hue-on-mark: var(--cream-on-mark); --hue-wash-lip: var(--cream-wash-lip); --hue-pale: var(--cream-pale); --hue-deep: var(--cream-deep); }
+[data-hue="plans"] { --hue: var(--sky); --hue-wash: var(--sky-wash); --hue-tint: var(--sky-tint); --hue-shade: var(--sky-shade); --hue-line: var(--sky-line);
+  --hue-on-wash: var(--sky-on-wash); --hue-on-wash-2: var(--sky-on-wash-2); --hue-wash-line: var(--sky-wash-line); --hue-wash-mark: var(--sky-wash-mark); --hue-on-mark: var(--sky-on-mark); --hue-wash-lip: var(--sky-wash-lip); --hue-pale: var(--sky-pale); --hue-deep: var(--sky-deep); }
+[data-hue="me"] { --hue: var(--butter); --hue-wash: var(--butter-wash); --hue-tint: var(--butter-tint); --hue-shade: var(--butter-shade); --hue-line: var(--butter-line);
+  --hue-on-wash: var(--butter-on-wash); --hue-on-wash-2: var(--butter-on-wash-2); --hue-wash-line: var(--butter-wash-line); --hue-wash-mark: var(--butter-wash-mark); --hue-on-mark: var(--butter-on-mark); --hue-wash-lip: var(--butter-wash-lip); --hue-pale: var(--butter-pale); --hue-deep: var(--butter-deep); }
+[data-hue="home"] { --hue: var(--peach); --hue-wash: var(--peach-wash); --hue-tint: var(--peach-tint); --hue-shade: var(--peach-shade); --hue-line: var(--peach-line);
+  --hue-on-wash: var(--peach-on-wash); --hue-on-wash-2: var(--peach-on-wash-2); --hue-wash-line: var(--peach-wash-line); --hue-wash-mark: var(--peach-wash-mark); --hue-on-mark: var(--peach-on-mark); --hue-wash-lip: var(--peach-wash-lip); --hue-pale: var(--peach-pale); --hue-deep: var(--peach-deep); }
+[data-hue="people"] { --hue: var(--pink); --hue-wash: var(--pink-wash); --hue-tint: var(--pink-tint); --hue-shade: var(--pink-shade); --hue-line: var(--pink-line);
+  --hue-on-wash: var(--pink-on-wash); --hue-on-wash-2: var(--pink-on-wash-2); --hue-wash-line: var(--pink-wash-line); --hue-wash-mark: var(--pink-wash-mark); --hue-on-mark: var(--pink-on-mark); --hue-wash-lip: var(--pink-wash-lip); --hue-pale: var(--pink-pale); --hue-deep: var(--pink-deep); }
+[data-hue="stream"] { --hue: var(--aqua); --hue-wash: var(--aqua-wash); --hue-tint: var(--aqua-tint); --hue-shade: var(--aqua-shade); --hue-line: var(--aqua-line);
+  --hue-on-wash: var(--aqua-on-wash); --hue-on-wash-2: var(--aqua-on-wash-2); --hue-wash-line: var(--aqua-wash-line); --hue-wash-mark: var(--aqua-wash-mark); --hue-on-mark: var(--aqua-on-mark); --hue-wash-lip: var(--aqua-wash-lip); --hue-pale: var(--aqua-pale); --hue-deep: var(--aqua-deep); }
+[data-hue="growing"] { --hue: var(--mint); --hue-wash: var(--mint-wash); --hue-tint: var(--mint-tint); --hue-shade: var(--mint-shade); --hue-line: var(--mint-line);
+  --hue-on-wash: var(--mint-on-wash); --hue-on-wash-2: var(--mint-on-wash-2); --hue-wash-line: var(--mint-wash-line); --hue-wash-mark: var(--mint-wash-mark); --hue-on-mark: var(--mint-on-mark); --hue-wash-lip: var(--mint-wash-lip); --hue-pale: var(--mint-pale); --hue-deep: var(--mint-deep); }
+[data-hue="library"] { --hue: var(--lav); --hue-wash: var(--lav-wash); --hue-tint: var(--lav-tint); --hue-shade: var(--lav-shade); --hue-line: var(--lav-line);
+  --hue-on-wash: var(--lav-on-wash); --hue-on-wash-2: var(--lav-on-wash-2); --hue-wash-line: var(--lav-wash-line); --hue-wash-mark: var(--lav-wash-mark); --hue-on-mark: var(--lav-on-mark); --hue-wash-lip: var(--lav-wash-lip); --hue-pale: var(--lav-pale); --hue-deep: var(--lav-deep); }
+[data-hue="viv"] { --hue: var(--cream); --hue-wash: var(--cream-wash); --hue-tint: var(--cream-tint); --hue-shade: var(--cream-shade); --hue-line: var(--cream-line);
+  --hue-on-wash: var(--cream-on-wash); --hue-on-wash-2: var(--cream-on-wash-2); --hue-wash-line: var(--cream-wash-line); --hue-wash-mark: var(--cream-wash-mark); --hue-on-mark: var(--cream-on-mark); --hue-wash-lip: var(--cream-wash-lip); --hue-pale: var(--cream-pale); --hue-deep: var(--cream-deep); }
 
 /* how a hue is worn in light: the default, and inside any data-theme="light" */
 [data-hue],
@@ -379,54 +469,44 @@
   --hue-box: var(--paper); --hue-box-line: var(--hue-shade); --hue-track: var(--paper); --hue-mark: var(--hue-wash-mark);
   --hue-pill: var(--paper); --hue-go: var(--hue-wash-mark); --hue-on-go: var(--hue-on-mark); --hue-go-lip: var(--lip);
   --hue-button: var(--raised); --hue-on-button: var(--text); --hue-button-lip: var(--lip); --hue-outline: var(--control-line);
-  --hue-ring: var(--ring);
+  --hue-ring: var(--ring); --hue-pale-line: var(--block-line);
+  --hue-block-line: var(--block-line); --hue-block-width: var(--block-width); --hue-title: var(--fs-18);
 }
 /* how a hue is worn in dark: the system setting, unless inside data-theme="light" */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) [data-hue]:not([data-theme="light"] [data-hue], [data-theme="light"][data-hue]) {
     --hue-fill: var(--hue-wash); --hue-lip: var(--hue-wash-lip); --hue-text: var(--hue-on-wash); --hue-text-2: var(--hue-on-wash-2);
-    --hue-box: var(--sunk); --hue-box-line: var(--rule); --hue-track: var(--hue-tint); --hue-mark: var(--hue-wash-mark);
-    --hue-pill: var(--hue); --hue-go: var(--hue-wash-mark); --hue-on-go: var(--hue-on-mark); --hue-go-lip: var(--hue-shade);
-    --hue-button: var(--raised); --hue-on-button: var(--text); --hue-button-lip: var(--lip); --hue-outline: transparent;
-    --hue-ring: var(--ring);
+    --hue-box: var(--lit-input); --hue-box-line: var(--hue-shade); --hue-track: var(--hue-shade); --hue-mark: var(--hue-wash-mark);
+    --hue-pill: var(--hue); --hue-go: var(--hue-wash-mark); --hue-on-go: var(--hue-on-mark); --hue-go-lip: var(--ink);
+    --hue-button: var(--hue-tint); --hue-on-button: var(--ink); --hue-button-lip: var(--hue-wash-mark); --hue-outline: var(--ink);
+    --hue-ring: var(--lit-ring); --hue-pale-line: var(--hue-shade);
   }
 }
 /* and inside data-theme="dark", on the page or on any element */
 [data-theme="dark"] [data-hue],
 [data-theme="dark"][data-hue] {
   --hue-fill: var(--hue-wash); --hue-lip: var(--hue-wash-lip); --hue-text: var(--hue-on-wash); --hue-text-2: var(--hue-on-wash-2);
-  --hue-box: var(--sunk); --hue-box-line: var(--rule); --hue-track: var(--hue-tint); --hue-mark: var(--hue-wash-mark);
-  --hue-pill: var(--hue); --hue-go: var(--hue-wash-mark); --hue-on-go: var(--hue-on-mark); --hue-go-lip: var(--hue-shade);
-  --hue-button: var(--raised); --hue-on-button: var(--text); --hue-button-lip: var(--lip); --hue-outline: transparent;
-  --hue-ring: var(--ring);
+  --hue-box: var(--lit-input); --hue-box-line: var(--hue-shade); --hue-track: var(--hue-shade); --hue-mark: var(--hue-wash-mark);
+  --hue-pill: var(--hue); --hue-go: var(--hue-wash-mark); --hue-on-go: var(--hue-on-mark); --hue-go-lip: var(--ink);
+  --hue-button: var(--hue-tint); --hue-on-button: var(--ink); --hue-button-lip: var(--hue-wash-mark); --hue-outline: var(--ink);
+  --hue-ring: var(--lit-ring); --hue-pale-line: var(--hue-shade);
 }
 
-/* peach at night is a lit block, a lantern */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) [data-hue="peach"]:not([data-theme="light"] [data-hue], [data-theme="light"][data-hue]) {
-    --hue-button: var(--hue-tint); --hue-on-button: var(--ink); --hue-button-lip: var(--hue-wash-mark); --hue-go-lip: var(--ink);
-    --hue-outline: var(--ink); --hue-ring: var(--ink);
-  }
-}
-[data-theme="dark"] [data-hue="peach"],
-[data-theme="dark"][data-hue="peach"] {
-  --hue-button: var(--hue-tint); --hue-on-button: var(--ink); --hue-button-lip: var(--hue-wash-mark); --hue-go-lip: var(--ink);
-  --hue-outline: var(--ink); --hue-ring: var(--ink);
-}
+/* STAKES AS DEPTH: three depths of a hue, meaning the same in every wing. This is the whole table:
+     pale  a small question, a filed line, a report, a lookup (data-type): almost paper, the hue's edge, no lip
+     mid   everything else: the block as it is
+     deep  a hard deadline, and my one Focus (data-state hard, is_focus; a card carries its row's own flags):
+           the deepest fill, all its writing ink, the heaviest outline and lip (--heavy-line)
+   Deep wins over pale. From the states and the card's type only, never from words. A block reads the result:
+   --hue-fill, --hue-block-line, --hue-block-width, --hue-lip, --hue-title */
+:root:root [data-hue]:is([data-type="question"], [data-type="filed"], [data-type="report"], [data-type="lookup"]) { --hue-fill: var(--hue-pale); --hue-block-line: var(--hue-pale-line); --hue-lip: transparent; --hue-title: var(--fs-16); }
+:root:root [data-hue]:is([data-state~="hard"], [data-state~="is_focus"]) { --hue-fill: var(--hue-deep); --hue-text-2: var(--hue-text);
+  --hue-block-line: var(--heavy-line); --hue-block-width: var(--outline-heavy); --hue-lip: var(--heavy-line); --hue-title: var(--fs-20); }
 
-/* butter at night is a lit block, a lantern */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) [data-hue="butter"]:not([data-theme="light"] [data-hue], [data-theme="light"][data-hue]) {
-    --hue-button: var(--hue-tint); --hue-on-button: var(--ink); --hue-button-lip: var(--hue-wash-mark); --hue-go-lip: var(--ink);
-    --hue-outline: var(--ink); --hue-ring: var(--ink);
-  }
-}
-[data-theme="dark"] [data-hue="butter"],
-[data-theme="dark"][data-hue="butter"] {
-  --hue-button: var(--hue-tint); --hue-on-button: var(--ink); --hue-button-lip: var(--hue-wash-mark); --hue-go-lip: var(--ink);
-  --hue-outline: var(--ink); --hue-ring: var(--ink);
-}
-
+/* A LIT BLOCK: inside it the layers and the writing are the lit ones (by day they are the day's own, so nothing
+   changes; at night a lit window is a small piece of day). .bs-lit, .bs-block and .bs-button are lit; a page's own
+   blocks say so with the same declarations, and the check holds them to these */
+.bs-lit, .bs-block, .bs-button { --text: var(--lit-text); --text-2: var(--lit-text-2); --text-3: var(--lit-text-3); --surface: var(--lit-surface); --raised: var(--lit-raised); --bar: var(--lit-bar); --input: var(--lit-input); --sunk: var(--lit-sunk); --glow: var(--lit-glow); --pill: var(--lit-pill); --on-pill: var(--lit-on-pill); --rule: var(--lit-rule); --edge: var(--lit-edge); --lip: var(--lit-lip); --track: var(--lit-track); --primary: var(--lit-primary); --on-primary: var(--lit-on-primary); --primary-lip: var(--lit-primary-lip); --tool: var(--lit-tool); --ring: var(--lit-ring); --block-line: var(--lit-block-line); --control-line: var(--lit-control-line); --hair-line: var(--lit-hair-line); --starlight: var(--lit-starlight); --red: var(--lit-red); --on-red: var(--lit-on-red); --red-line: var(--lit-red-line); --red-wash: var(--lit-red-wash); --amber-wash: var(--lit-amber-wash); --amber-line: var(--lit-amber-line); color: var(--text); }
 
 /* ---------- type, space, shape, motion and touch: the same in both themes ---------- */
 :root {
@@ -449,12 +529,14 @@
      block down and the lift shrinks to match */
   --radius-xs: 4px; --radius-s: 8px; --radius-m: 12px; --radius-row: 14px; --radius-card: 16px; --radius-pane: 20px;
   --radius-pill: 999px;
-  --outline-hair: 1.5px; --outline-thin: 2px; --outline: 2.5px; --stripe: 12px; --ribbon: 5px;
-  --lift-pressed: 0 1px 0; --lift-1: 0 2px 0; --lift-2: 0 3px 0; --lift-3: 0 4px 0; --lift-4: 0 5px 0;
+  --outline-hair: 1.5px; --outline-thin: 2px; --outline: 2.5px; --outline-heavy: 3px; --stripe: 12px; --ribbon: 5px;
+  --lift-pressed: 0 1px 0; --lift-1: 0 1px 0; --lift-2: 0 1.5px 0; --lift-3: 0 2px 0; --lift-4: 0 3px 0;
   --lift-left: -5px 0 0; /* a drawer lifts toward the page it covers */
   --glint: inset 0 1px 0; /* the line of starlight caught on a block's top edge: var(--glint) var(--starlight) */
   --ring-width: 3px; --ring-offset: 3px;
-  --dunes-h: 260px; --moon-size: 36px;  /* the dune band's height (the picture is cropped at the sides, never stretched) and the crescent */
+  /* the scenery's sizes: the dune band's height (everything in the scene is measured in it) and the crescent's width
+     and place in its sky (a size of 0px hides either) */
+  --dunes-h: 260px; --moon-size: 36px; --moon-top: var(--space-10); --moon-right: var(--space-6);
 
   /* motion */
   --dur-press: .08s; --dur-change: .15s; --dur-pop: .24s; --dur-grow: .4s; --dur-leaf: .7s;
@@ -464,21 +546,82 @@
   --tap: 2.75rem;
 }
 
-/* ---------- ready-made: the sky, the ribbon, the night veil, and the block ---------- */
-.bs-sky { background-color: var(--ground); background-image: var(--motif); background-size: var(--motif-size); background-attachment: var(--motif-attachment); }
+/* ---------- ready-made: the ribbon, the night veil, and the block ---------- */
 .bs-ribbon { height: var(--ribbon); background: var(--prism); }
 .bs-veiled { position: relative; }
 .bs-veiled::after { content: ""; position: absolute; inset: 0; background: var(--veil); mix-blend-mode: multiply; pointer-events: none; border-radius: inherit; }
-.has-dunes { position: relative; isolation: isolate; }
-.motif-dunes { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: var(--dunes-h); z-index: -1; pointer-events: none; display: block; }
-.motif-dunes.at-window { position: fixed; }
-.motif-moon { display: none; position: absolute; top: var(--space-10); right: var(--space-6); width: var(--moon-size); height: auto; z-index: -1; pointer-events: none; }
-:root[data-theme="dark"] .motif-moon { display: block; }
 .bs-block { background: var(--surface); color: var(--text); border: var(--block-width) solid var(--block-line); border-radius: var(--radius-card); box-shadow: var(--glint) var(--starlight), var(--lift-3) var(--lip); }
 .bs-block[data-hue] { background: var(--hue-fill); color: var(--hue-text); box-shadow: var(--glint) var(--starlight), var(--lift-3) var(--hue-lip); }
 .bs-button { min-height: var(--tap); padding: 0 var(--space-8); border: var(--outline-thin) solid var(--control-line); border-radius: var(--radius-m); background: var(--raised); color: var(--text); font: inherit; font-weight: var(--fw-semi); box-shadow: var(--glint) var(--starlight), var(--lift-2) var(--lip); }
 .bs-button.primary { background: var(--primary); color: var(--on-primary); box-shadow: var(--lift-2) var(--primary-lip); }
 [data-hue] .bs-button.primary { background: var(--hue-go); color: var(--hue-on-go); box-shadow: var(--lift-2) var(--hue-go-lip); }
+
+/* ---------- the scenery: the sky by day and by night, drawn once. Wear it with .bs-sky (.bs-sky.at-window on a
+   page that scrolls); --dunes-h, --moon-size, --moon-top and --moon-right size and place it (0px hides) ---------- */
+.bs-sky {
+  --scene-hold: scroll;
+  position: relative; isolation: isolate; background-color: var(--ground);
+  background-image:
+    linear-gradient(0deg, var(--haze) 0%, var(--haze-clear) 40%),
+    radial-gradient(circle at 41px 62px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
+    radial-gradient(circle at 203px 151px, var(--star-1) 0, var(--star-1) 0.75px, transparent 1.45px),
+    radial-gradient(circle at 318px 277px, var(--star-1) 0, var(--star-1) 0.9px, transparent 1.60px),
+    radial-gradient(circle at 23px 190px, var(--star-2) 0, var(--star-2) 0.8px, transparent 1.50px),
+    radial-gradient(circle at 97px 44px, var(--star-2) 0, var(--star-2) 0.7px, transparent 1.40px),
+    radial-gradient(circle at 171px 133px, var(--star-2) 0, var(--star-2) 0.8px, transparent 1.50px),
+    radial-gradient(circle at 239px 211px, var(--star-2) 0, var(--star-2) 0.7px, transparent 1.40px),
+    radial-gradient(circle at 31px 23px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
+    radial-gradient(circle at 88px 121px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
+    radial-gradient(circle at 139px 71px, var(--star-3) 0, var(--star-3) 0.6px, transparent 1.30px),
+    radial-gradient(circle at 150px 170px, var(--star-3) 0, var(--star-3) 0.7px, transparent 1.40px),
+    radial-gradient(circle at 17px 97px, var(--star-3) 0, var(--star-3) 0.55px, transparent 1.25px),
+    radial-gradient(circle at 74px 31px, var(--star-3) 0, var(--star-3) 0.6px, transparent 1.30px),
+    radial-gradient(circle at 112px 128px, var(--star-3) 0, var(--star-3) 0.55px, transparent 1.25px),
+    radial-gradient(circle at 366px 58px, var(--star-1) 0, var(--star-1) 1.05px, transparent 1.75px),
+    radial-gradient(circle at 121px 340px, var(--star-1) 0, var(--star-1) 0.8px, transparent 1.50px),
+    radial-gradient(circle at 127px 96px, var(--star-butter) 0, var(--star-butter) 1.25px, transparent 1.95px),
+    radial-gradient(circle at 512px 331px, var(--star-pink) 0, var(--star-pink) 1.15px, transparent 1.85px),
+    radial-gradient(circle at 301px 487px, var(--star-sky) 0, var(--star-sky) 1.2px, transparent 1.90px),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-front) 0, var(--dune-front) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-front) 0, var(--dune-front) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-near) 0, var(--dune-near) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-near) 0, var(--dune-near) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-mid) 0, var(--dune-mid) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-mid) 0, var(--dune-mid) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-far) 0, var(--dune-far) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 50% 100% at 50% 100%, var(--dune-far) 0, var(--dune-far) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(circle at 64% calc(100% - var(--dunes-h) * 1.5), var(--dune-sun) 0, var(--dune-sun) calc(var(--dunes-h) * 0.62), transparent calc(var(--dunes-h) * 0.62 + 1.5px)),
+    radial-gradient(ellipse 66% 17% at 24% 55%, var(--field-peach) 0, var(--field-peach) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 78% 19% at 92% 43%, var(--field-pink) 0, var(--field-pink) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 72% 18% at 4% 33%, var(--field-mint) 0, var(--field-mint) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 58% 16% at 52% 21%, var(--field-butter) 0, var(--field-butter) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 70% 20% at 98% 12%, var(--field-lav) 0, var(--field-lav) calc(100% - 1.5px), transparent 100%),
+    radial-gradient(ellipse 80% 22% at 10% 2%, var(--field-sky) 0, var(--field-sky) calc(100% - 1.5px), transparent 100%),
+    linear-gradient(180deg in oklab, var(--sky-top) 0%, var(--ground) 46%, var(--sky-foot) 82%, var(--sky-foot) 100%);;
+  background-size: 100% 100%, 389px 331px, 389px 331px, 389px 331px, 277px 241px, 277px 241px, 277px 241px, 277px 241px, 173px 197px, 173px 197px, 173px 197px, 173px 197px, 131px 149px, 131px 149px, 131px 149px, 467px 421px, 467px 421px, 613px 547px, 701px 463px, 557px 619px, calc(var(--dunes-h) * 3.3) calc(var(--dunes-h) * 0.52), calc(var(--dunes-h) * 3.3) calc(var(--dunes-h) * 0.42), calc(var(--dunes-h) * 4.2) calc(var(--dunes-h) * 0.9), calc(var(--dunes-h) * 4.2) calc(var(--dunes-h) * 0.76), calc(var(--dunes-h) * 3.7) calc(var(--dunes-h) * 1.3), calc(var(--dunes-h) * 3.7) calc(var(--dunes-h) * 1.12), calc(var(--dunes-h) * 4.6) calc(var(--dunes-h) * 1.72), calc(var(--dunes-h) * 4.6) calc(var(--dunes-h) * 1.5), 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, calc(50% + var(--dunes-h) * 0.4) 100%, calc(50% + var(--dunes-h) * 2.05) 100%, calc(50% + var(--dunes-h) * -1.5) 100%, calc(50% + var(--dunes-h) * 0.6) 100%, calc(50% + var(--dunes-h) * 0.7) 100%, calc(50% + var(--dunes-h) * 2.55) 100%, calc(50% + var(--dunes-h) * -0.9) 100%, calc(50% + var(--dunes-h) * 1.4) 100%, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+  background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+  background-attachment: fixed, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, scroll, var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), var(--scene-hold), fixed;
+}
+.bs-sky.at-window { --scene-hold: fixed; }
+.bs-sky::before, .bs-sky::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.bs-sky::before {
+  background: linear-gradient(var(--horizon-far) 50%, var(--horizon-mid) 50%, var(--horizon-mid) 65%, var(--horizon-near) 65%, var(--horizon-near) 79%, var(--horizon-front) 79%) center bottom / 100% var(--dunes-h) no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 260' width='1600' height='260'%3E%3Cpath d='M0,131.0C38,132.0 76,131.9 114,131.4C152,130.8 190,129.0 229,127.5C267,126.0 305,123.4 343,122.2C381,120.9 419,120.1 457,120.1C495,120.1 533,121.8 571,122.2C610,122.6 648,123.1 686,122.3C724,121.6 762,119.6 800,117.8C838,116.0 876,113.6 914,111.4C952,109.2 990,106.7 1029,104.8C1067,103.0 1105,100.6 1143,100.3C1181,99.9 1219,100.5 1257,102.7C1295,104.9 1333,109.8 1371,113.5C1410,117.2 1448,122.0 1486,124.9C1524,127.9 1562,129.9 1600,131.0V260H0Z'/%3E%3Cpath d='M0,150.1C38,150.9 76,151.1 114,148.8C152,146.5 190,140.5 229,136.1C267,131.8 305,125.1 343,122.7C381,120.4 419,119.5 457,122.1C495,124.7 533,133.2 571,138.4C610,143.6 648,149.2 686,153.3C724,157.4 762,160.8 800,163.0C838,165.2 876,165.2 914,166.6C952,168.0 990,170.6 1029,171.6C1067,172.6 1105,174.1 1143,172.4C1181,170.7 1219,165.3 1257,161.5C1295,157.6 1333,152.2 1371,149.3C1410,146.4 1448,143.9 1486,144.0C1524,144.2 1562,149.3 1600,150.1V260H0Z'/%3E%3Cpath d='M0,192.5C38,189.4 76,186.5 114,185.8C152,185.2 190,187.7 229,188.7C267,189.8 305,192.1 343,191.9C381,191.7 419,189.9 457,187.7C495,185.4 533,182.0 571,178.5C610,175.0 648,170.6 686,166.7C724,162.7 762,157.2 800,154.6C838,152.1 876,149.4 914,151.3C952,153.1 990,159.3 1029,165.6C1067,172.0 1105,182.6 1143,189.6C1181,196.5 1219,203.6 1257,207.2C1295,210.9 1333,212.1 1371,211.6C1410,211.1 1448,207.4 1486,204.2C1524,201.1 1562,195.5 1600,192.5V260H0Z'/%3E%3Cpath d='M0,205.2C38,203.5 76,201.8 114,202.2C152,202.6 190,204.0 229,207.4C267,210.7 305,216.9 343,222.2C381,227.4 419,235.0 457,238.8C495,242.6 533,244.6 571,244.9C610,245.2 648,242.6 686,240.5C724,238.4 762,235.0 800,232.3C838,229.5 876,226.4 914,224.1C952,221.8 990,219.3 1029,218.3C1067,217.4 1105,217.8 1143,218.3C1181,218.9 1219,221.3 1257,221.6C1295,221.8 1333,221.3 1371,219.8C1410,218.3 1448,215.0 1486,212.5C1524,210.1 1562,206.9 1600,205.2V260H0Z'/%3E%3C/svg%3E") center bottom / auto var(--dunes-h) repeat-x;
+}
+.bs-sky::after {
+  background:
+    linear-gradient(var(--moon), var(--moon)) right var(--moon-right) top var(--moon-top) / var(--moon-size) calc(var(--moon-size) * 68 / 48) no-repeat,
+    linear-gradient(var(--star-geo) 34%, var(--horizon-crest) 34%) center bottom / 100% var(--dunes-h) no-repeat;
+  mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-24 -24 48 68' width='48' height='68'%3E%3Cpath transform='rotate(-24)' d='M7.42,-18.57A20,20 0 1 0 7.42,18.57A18.6,18.6 0 1 1 7.42,-18.57Z'/%3E%3Cpath d='M13.4,37.0L11.2,37.9L12.1,40.1L9.9,39.2L9.0,41.4L8.1,39.2L5.9,40.1L6.8,37.9L4.6,37.0L6.8,36.1L5.9,33.9L8.1,34.8L9.0,32.6L9.9,34.8L12.1,33.9L11.2,36.1Z'/%3E%3C/svg%3E") right var(--moon-right) top var(--moon-top) / var(--moon-size) auto no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 260' width='1600' height='260'%3E%3Cpath d='M317.0,54.0L313.5,55.4L314.9,58.9L311.4,57.5L310.0,61.0L308.6,57.5L305.1,58.9L306.5,55.4L303.0,54.0L306.5,52.6L305.1,49.1L308.6,50.5L310.0,47.0L311.4,50.5L314.9,49.1L313.5,52.6ZM1015.5,28.0L1012.7,29.1L1013.9,31.9L1011.1,30.7L1010.0,33.5L1008.9,30.7L1006.1,31.9L1007.3,29.1L1004.5,28.0L1007.3,26.9L1006.1,24.1L1008.9,25.3L1010.0,22.5L1011.1,25.3L1013.9,24.1L1012.7,26.9ZM1401.2,70.0L1398.1,71.3L1399.4,74.4L1396.3,73.1L1395.0,76.2L1393.7,73.1L1390.6,74.4L1391.9,71.3L1388.8,70.0L1391.9,68.7L1390.6,65.6L1393.7,66.9L1395.0,63.8L1396.3,66.9L1399.4,65.6L1398.1,68.7Z'/%3E%3Cg fill='none' stroke='currentColor' stroke-linecap='round'%3E%3Cpath d='M0,131.0C38,132.0 76,131.9 114,131.4C152,130.8 190,129.0 229,127.5C267,126.0 305,123.4 343,122.2C381,120.9 419,120.1 457,120.1C495,120.1 533,121.8 571,122.2C610,122.6 648,123.1 686,122.3C724,121.6 762,119.6 800,117.8C838,116.0 876,113.6 914,111.4C952,109.2 990,106.7 1029,104.8C1067,103.0 1105,100.6 1143,100.3C1181,99.9 1219,100.5 1257,102.7C1295,104.9 1333,109.8 1371,113.5C1410,117.2 1448,122.0 1486,124.9C1524,127.9 1562,129.9 1600,131.0' stroke-width='2.5'/%3E%3Cpath d='M405,119.8C435,182.9 570,206.7 705,260' stroke-width='1.75'/%3E%3Cpath d='M0,150.1C38,150.9 76,151.1 114,148.8C152,146.5 190,140.5 229,136.1C267,131.8 305,125.1 343,122.7C381,120.4 419,119.5 457,122.1C495,124.7 533,133.2 571,138.4C610,143.6 648,149.2 686,153.3C724,157.4 762,160.8 800,163.0C838,165.2 876,165.2 914,166.6C952,168.0 990,170.6 1029,171.6C1067,172.6 1105,174.1 1143,172.4C1181,170.7 1219,165.3 1257,161.5C1295,157.6 1333,152.2 1371,149.3C1410,146.4 1448,143.9 1486,144.0C1524,144.2 1562,149.3 1600,150.1' stroke-width='2.5'/%3E%3Cpath d='M884,150.6C850,199.8 697,218.4 544,260' stroke-width='1.75'/%3E%3Cpath d='M0,192.5C38,189.4 76,186.5 114,185.8C152,185.2 190,187.7 229,188.7C267,189.8 305,192.1 343,191.9C381,191.7 419,189.9 457,187.7C495,185.4 533,182.0 571,178.5C610,175.0 648,170.6 686,166.7C724,162.7 762,157.2 800,154.6C838,152.1 876,149.4 914,151.3C952,153.1 990,159.3 1029,165.6C1067,172.0 1105,182.6 1143,189.6C1181,196.5 1219,203.6 1257,207.2C1295,210.9 1333,212.1 1371,211.6C1410,211.1 1448,207.4 1486,204.2C1524,201.1 1562,195.5 1600,192.5' stroke-width='2.5'/%3E%3Cpath d='M108,202.2C146,228.2 317,238.0 488,260' stroke-width='1.75'/%3E%3Cpath d='M0,205.2C38,203.5 76,201.8 114,202.2C152,202.6 190,204.0 229,207.4C267,210.7 305,216.9 343,222.2C381,227.4 419,235.0 457,238.8C495,242.6 533,244.6 571,244.9C610,245.2 648,242.6 686,240.5C724,238.4 762,235.0 800,232.3C838,229.5 876,226.4 914,224.1C952,221.8 990,219.3 1029,218.3C1067,217.4 1105,217.8 1143,218.3C1181,218.9 1219,221.3 1257,221.6C1295,221.8 1333,221.3 1371,219.8C1410,218.3 1448,215.0 1486,212.5C1524,210.1 1562,206.9 1600,205.2' stroke-width='2.5'/%3E%3C/g%3E%3C/svg%3E") center bottom / auto var(--dunes-h) repeat-x;
+}
+
+/* the scenery by screen: a shorter dune band on a phone and a taller one on a very wide screen; no crescent on a
+   phone (no free sky) */
+@media (max-width: 759px) { :root { --dunes-h: 160px; --moon-size: 0px; } }
+@media (min-width: 2200px) { :root { --dunes-h: 340px; } }
 
 /* no motion for anyone who asked their system for less */
 @media (prefers-reduced-motion: reduce) {

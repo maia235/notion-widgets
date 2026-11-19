@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Vivarium for Notion
 @namespace    https://maia235.github.io/notion-widgets
-@version      0.2.2
+@version      0.2.3
 @description  A calm, flat block-pastel look for Notion in Firefox, wearing Blueberry Sunrise: my cream sunrise in light, a blueberry night in dark, full width on every page, less clutter.
 @homepageURL  https://github.com/maia235/notion-widgets
 @updateURL    https://maia235.github.io/notion-widgets/vivarium.user.css
@@ -97,7 +97,7 @@
 @-moz-document domain("notion.so"), domain("www.notion.so"), domain("notion.com"), domain("app.notion.com"), domain("notion.site") {
 
   /* generated: palette */
-  /* from the Blueberry Sunrise root d240ffb88b76; never edit by hand */
+  /* from the Blueberry Sunrise root 8491c1f3dd1b; never edit by hand */
   @ground: #fdfaf5;
   @pane: #f6f2fe;
   @surface: #ffffff;
