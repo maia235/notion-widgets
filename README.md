@@ -8,7 +8,7 @@ Small pages I embed in my Notion dashboard, and the style that dresses Notion it
 - `vivarium.user.css`: my Notion look in Firefox (below). `node test-vivarium.mjs` checks it.
 - `blueberry-sunrise.css`: my design system, Blueberry Sunrise, as one file any project can use (below), with an example page, `blueberry-sunrise.html`. `node test-blueberry-sunrise.mjs` checks both.
 
-The colours in every file here are generated from Blueberry Sunrise's root; nothing here is edited by hand.
+The design files here are generated from Blueberry Sunrise's root, and the widgets read their colours from `blueberry-sunrise.css`; the tests and this README are the only hand-written parts.
 
 ## How to use Blueberry Sunrise in another project
 
@@ -27,11 +27,11 @@ Light is the sunrise (sunlight on cream, cool violet shadow, clean pastel blocks
   box-shadow: var(--glint) var(--starlight), var(--lift-3) var(--hue-lip); }
 ```
 
-Or use the ready-made `.bs-block` and `.bs-button` (`.bs-button.primary` for the main one). Give a block a hue with `data-hue="pink"` (`peach`, `butter`, `mint`, `sky`, `lav`). `.bs-sky` paints a page's open ground (the sunrise, or the still star field), `.bs-ribbon` is the rainbow hairline under a top bar, `.bs-veiled` puts the night veil over a picture.
+Or use the ready-made `.bs-block` and `.bs-button` (`.bs-button.primary` for the main one). Give a block a hue with `data-hue="pink"` (`peach`, `butter`, `mint`, `aqua`, `sky`, `lav`, and `cream` for paper), or with the wing it belongs to (`plans`, `me`, `home`, `people`, `stream`, `growing`, `library`, `viv`): colour is the wing. `.bs-ribbon` is the rainbow hairline under a top bar, `.bs-veiled` puts the night veil over a picture.
 
-Open ground takes `.bs-sky`: my flat cream by day; by night the sky fades from deepest at the top to a lighter horizon (fixed to the window) under the still stars. The dunes and the crescent are two small pictures: copy them inline from `blueberry-sunrise.html` into the region marked `.has-dunes` (the dunes sit at its foot, the crescent in its top right margin, by night only). Never inside a card, a panel or a table, and never behind writing.
+The scenery is one class. `class="bs-sky"` on a column or panel wears the whole sky: by day the sun, its rings, the dunes and soft colour fields; by night the fade, the stars, the dune horizon and the crescent. On a page that scrolls, `class="bs-sky at-window"` keeps it fixed to the window. Nothing to copy: no pictures, no extra markup. `--dunes-h`, `--moon-size`, `--moon-top` and `--moon-right` size and place it (`0px` hides one); phones get a shorter dune band and no crescent by themselves. Never inside a card, a panel or a table, and never behind writing.
 
-`blueberry-sunrise.html` shows every swatch, a sample block and buttons, and the dunes and the crescent, light and dark side by side.
+`blueberry-sunrise.html` shows every swatch, a sample block and buttons, and the scenery, light and dark side by side.
 
 ## The Vivarium style for Notion
 
