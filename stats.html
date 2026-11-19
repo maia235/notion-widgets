@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-m9hhujggSDaaWOkDzIqS+Xc4XOV4tZ2HPXUQ2zK8Cak='; style-src 'self' 'sha256-BzPS3MBnHz64Hpl1nfh+9Bfr6kfoopJfvYGcQEcviMY='; font-src data:; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Number Bar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="fira-sans.css">
 <link rel="stylesheet" href="blueberry-sunrise.css">
 <style>
   /* blueberry-sunrise: every colour comes from blueberry-sunrise.css; only these are the widget's own */
@@ -29,20 +31,36 @@
 <div class="bar" id="bar"></div>
 <div class="asof" id="asof" hidden></div>
 <script>
-  // ?s=[["label", "value", "colour", "of"], ...]  colour: pink peach butter mint sky lav
-  // Optional &t=<unix seconds the numbers were worked out>&ttl=<lifetime in seconds>: past t + ttl the bar greys.
-  // A link without t is never greyed.
-  const params = new URLSearchParams(location.search);
+  // The numbers ride in the part of the link after #, which a browser never sends to any server:
+  // #s=[["label", "value", "colour", "of"], ...]&t=<unix seconds the numbers were worked out>&ttl=<lifetime, seconds>
+  // colour: pink peach butter mint sky lav. Past t + ttl the bar greys; a link without t is never greyed.
+  // Nothing read here is kept or sent anywhere, and the page's title never changes.
+  // The hand-over: an old link carried them after ? instead. It is read once, so a bar never shows blank before the
+  // tick has rewritten it, and taken out of the address at once (it was already sent; this only stops it lingering).
+  const fragment = new URLSearchParams(String(location.hash || "").replace(/^#/, ""));
+  const query = new URLSearchParams(location.search || "");
+  const old = !fragment.has("s") && query.has("s");
+  const params = old ? query : fragment;
+  if (old && typeof history !== "undefined" && history.replaceState) history.replaceState(null, "", location.pathname);
   let stats = [];
   try { stats = JSON.parse(params.get("s") || "[]"); } catch (e) { stats = []; }
   if (!Array.isArray(stats)) stats = [];
   const bar = document.getElementById("bar");
-  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const COLOURS = ["pink", "peach", "butter", "mint", "sky", "lav"];
+  function el(tag, cls, text) {
+    const d = document.createElement(tag);
+    if (cls) d.className = cls;
+    if (text !== undefined) d.textContent = text;
+    return d;
+  }
   stats.forEach(row => {
     const [label, value, colour, of] = Array.isArray(row) ? row : [];
-    const d = document.createElement("div");
-    d.innerHTML = `<div class="label">${esc(label)}</div><div class="card" style="background: var(--${esc(colour || "lav")})">` +
-      `<span class="num">${esc(value)}</span>${of ? `<span class="of">/ ${esc(of)}</span>` : ""}</div>`;
+    const d = el("div"), card = el("div", "card");
+    card.style.background = "var(--" + (COLOURS.includes(colour) ? colour : "lav") + ")";
+    card.appendChild(el("span", "num", String(value)));
+    if (of) card.appendChild(el("span", "of", "/ " + String(of)));
+    d.appendChild(el("div", "label", String(label)));
+    d.appendChild(card);
     bar.appendChild(d);
   });
 
